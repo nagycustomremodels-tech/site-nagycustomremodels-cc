@@ -3,58 +3,1071 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nagy Custom Remodels — Coming Soon</title>
+  <meta name="description" content="Premium kitchen, bathroom & flooring remodeling in Jacksonville, FL. Licensed & insured. Bilingual team. 5-star rated. Clean work site, zero mess. Get a free quote today.">
+  <meta name="keywords" content="kitchen remodeling Jacksonville FL, bathroom remodeling Jacksonville, flooring contractor Jacksonville, home renovation Jacksonville">
+  <title>Nagy Custom Remodeling | Jacksonville, FL</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet">
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg:      #F5F5F5;
+      --bg2:     #EEEEEE;
+      --bg3:     #E5E5E5;
+      --border:  #D4D4D4;
+      --ink:     #1A1A1A;
+      --ink-d:   #3A3A3A;
+      --ink-m:   #6A6A6A;
+      --accent:  #D0551C;
+      --green:   #25d366;
+      --white:   #FFFFFF;
+      --font:    'DM Sans', sans-serif;
+      --max:     1200px;
+      --nav:     68px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #0f0f0f;
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-    }
-    .container { max-width: 600px; }
-    h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-    }
-    h1 span { color: #c8a96e; }
-    p {
-      font-size: 1.1rem;
-      color: #888;
-      margin-bottom: 2rem;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      font-weight: 300;
       line-height: 1.6;
+      overflow-x: hidden;
     }
-    .badge {
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+
+    /* ── ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(.22,.68,0,1.2), transform 0.75s cubic-bezier(.22,.68,0,1.2);
+    }
+    .reveal.from-left  { transform: translateX(-28px); }
+    .reveal.from-right { transform: translateX(28px); }
+    .reveal.scale-in   { transform: scale(0.94); }
+    .reveal.active {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal.d1 { transition-delay: 0.08s; }
+    .reveal.d2 { transition-delay: 0.16s; }
+    .reveal.d3 { transition-delay: 0.24s; }
+    .reveal.d4 { transition-delay: 0.32s; }
+    .reveal.d5 { transition-delay: 0.40s; }
+    .reveal.d6 { transition-delay: 0.48s; }
+
+    /* hero load stagger */
+    .hero-anim {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .hero-anim.loaded { opacity: 1; transform: none; }
+    .hero-anim-right {
+      opacity: 0;
+      transform: translateX(32px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+    .hero-anim-right.loaded { opacity: 1; transform: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; inset: 0 0 auto 0; height: var(--nav);
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      transition: box-shadow .3s;
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 2rem;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; color: var(--ink); }
+    .logo svg { width: 34px; height: 28px; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .logo-name { font-weight: 600; font-size: .95rem; letter-spacing: .22em; }
+    .logo-sub { font-size: .5rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-m); margin-top: 3px; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--ink-m); text-decoration: none; font-size: .8rem; letter-spacing: .06em;
+      position: relative; padding-bottom: 2px;
+      transition: color .2s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 1.5px; background: var(--accent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .25s ease;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .nav-phone { color: var(--ink-m); text-decoration: none; font-size: .82rem; letter-spacing: .04em; transition: color .2s; }
+    .nav-phone:hover { color: var(--ink); }
+    .btn-nav {
+      background: var(--accent); color: #fff;
+      padding: .55rem 1.25rem; font-family: var(--font); font-size: .72rem; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn-nav:hover { opacity: .88; transform: translateY(-1px); }
+
+    /* hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ink); transition: transform .3s, opacity .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mob-menu {
+      display: none; position: fixed; top: var(--nav); inset-inline: 0;
+      background: var(--white); border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem; flex-direction: column; gap: .25rem; z-index: 99;
+    }
+    .mob-menu.open { display: flex; }
+    .mob-menu a { color: var(--ink-m); text-decoration: none; font-size: .9rem; padding: .6rem 0; border-bottom: 1px solid var(--border); transition: color .2s; }
+    .mob-menu a:last-child { border-bottom: none; }
+    .mob-menu a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    #hero {
+      height: 100vh; min-height: 640px;
+      padding-top: var(--nav);
+      display: grid;
+      grid-template-columns: 1fr 55%;
+      overflow: hidden;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 4rem 3.5rem 4rem 4rem;
+      background: var(--white);
+      position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-size: .6rem; font-weight: 600; letter-spacing: .32em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1.75rem;
+    }
+    .hero-eyebrow::before { content: ''; width: 24px; height: 1.5px; background: var(--accent); }
+    .hero-h1 {
+      font-size: clamp(2.4rem, 3.8vw, 3.8rem); font-weight: 700;
+      line-height: 1.05; letter-spacing: -.035em;
+      color: var(--ink); margin-bottom: 1.5rem;
+    }
+    .hero-h1 em { font-style: normal; font-weight: 300; color: var(--ink-m); }
+    .hero-sub {
+      font-size: .9rem; color: var(--ink-m); line-height: 1.8; max-width: 340px;
+      margin-bottom: 2.5rem;
+      border-left: 2px solid var(--accent); padding-left: 1rem;
+    }
+    .hero-cta-row { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 3.5rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      padding: .9rem 2rem; font-family: var(--font); font-size: .72rem; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
       display: inline-block;
-      background: #c8a96e22;
-      border: 1px solid #c8a96e55;
-      color: #c8a96e;
-      padding: 0.5rem 1.25rem;
-      border-radius: 999px;
-      font-size: 0.875rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      transition: opacity .2s, transform .25s cubic-bezier(.22,.68,0,1.4), box-shadow .2s;
     }
-    .location {
-      margin-top: 3rem;
-      font-size: 0.875rem;
-      color: #555;
+    .btn-primary:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(208,85,28,.3); }
+    .hero-link {
+      color: var(--ink-m); font-size: .78rem; letter-spacing: .06em; text-decoration: none;
+      display: flex; align-items: center; gap: .4rem; transition: color .2s;
+    }
+    .hero-link:hover { color: var(--ink); }
+    .hero-link svg { transition: transform .25s ease; }
+    .hero-link:hover svg { transform: translateX(4px); }
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border); padding-top: 2rem;
+    }
+    .hero-stat { padding-right: 1.5rem; border-right: 1px solid var(--border); }
+    .hero-stat:last-child { border-right: none; padding-right: 0; padding-left: 1.5rem; }
+    .hero-stat:nth-child(2) { padding-left: 1.5rem; }
+    .hero-stat-num { display: block; font-size: 1.85rem; font-weight: 700; letter-spacing: -.03em; color: var(--ink); line-height: 1; margin-bottom: .3rem; }
+    .hero-stat-lbl { font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-m); }
+    .hero-right { position: relative; overflow: hidden; }
+    .hero-right img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.1s linear;
+      will-change: transform;
+    }
+    .hero-right::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.45) 0%, transparent 50%);
+    }
+    .hero-badge {
+      position: absolute; bottom: 2.5rem; left: 2rem; z-index: 2;
+      background: rgba(255,255,255,.96); border: 1px solid var(--border);
+      padding: 1rem 1.5rem; display: flex; flex-direction: column; gap: .2rem;
+      backdrop-filter: blur(8px);
+      opacity: 0; transform: translateY(12px);
+      transition: opacity .6s ease .8s, transform .6s ease .8s;
+    }
+    .hero-badge.loaded { opacity: 1; transform: none; }
+    .hero-badge-num { font-size: 1.9rem; font-weight: 700; letter-spacing: -.04em; color: var(--accent); line-height: 1; }
+    .hero-badge-lbl { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-m); }
+    .hero-badge-stars { color: var(--accent); font-size: .75rem; letter-spacing: 2px; margin-top: .25rem; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 6rem 0; }
+    .sec-label {
+      font-size: .6rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase;
+      color: var(--ink-m); display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem;
+    }
+    .sec-label::after { content: ''; width: 32px; height: 1px; background: var(--ink-m); }
+    .sec-title { font-size: clamp(1.75rem, 2.8vw, 2.5rem); font-weight: 700; letter-spacing: -.025em; margin-bottom: 3rem; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .svc-card {
+      background: var(--white); padding: 2.75rem 2.5rem;
+      position: relative; overflow: hidden; transition: background .3s;
+    }
+    .svc-card:hover { background: var(--bg); }
+    .svc-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: var(--accent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .4s ease;
+    }
+    .svc-card:hover::after { transform: scaleX(1); }
+    .svc-num {
+      position: absolute; top: 1.25rem; right: 2rem;
+      font-size: 4rem; font-weight: 700; color: var(--bg2);
+      letter-spacing: -.04em; line-height: 1; pointer-events: none;
+      transition: color .3s;
+    }
+    .svc-card:hover .svc-num { color: var(--bg3); }
+    .svc-icon { width: 38px; height: 38px; margin-bottom: 1.5rem; opacity: .5; color: var(--ink); }
+    .svc-title { font-size: 1.1rem; font-weight: 600; letter-spacing: -.01em; color: var(--ink); margin-bottom: .6rem; }
+    .svc-desc { font-size: .875rem; color: var(--ink-m); line-height: 1.7; max-width: 320px; }
+
+    /* ── BEFORE / AFTER ── */
+    #before-after { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .ba-lead { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 2.5rem; }
+    .ba-intro { font-size: .9rem; color: var(--ink-m); line-height: 1.8; }
+    .ba-slider {
+      position: relative; overflow: hidden; aspect-ratio: 16/7;
+      cursor: ew-resize; user-select: none; background: var(--bg3);
+      box-shadow: 0 8px 40px rgba(0,0,0,.12);
+    }
+    .ba-before, .ba-after { position: absolute; inset: 0; }
+    .ba-before img, .ba-after img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ba-after { clip-path: inset(0 50% 0 0); }
+    .ba-tag {
+      position: absolute; top: 1.25rem; z-index: 2;
+      background: rgba(0,0,0,.6); color: #fff; backdrop-filter: blur(6px);
+      font-size: .6rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+      padding: .3rem .75rem;
+    }
+    .ba-tag-before { left: 1.25rem; }
+    .ba-tag-after { right: 1.25rem; }
+    .ba-handle {
+      position: absolute; top: 0; bottom: 0; left: 50%;
+      transform: translateX(-50%); width: 48px;
+      display: flex; align-items: center; justify-content: center; z-index: 3;
+    }
+    .ba-line {
+      position: absolute; top: 0; bottom: 0; left: 50%; width: 2px;
+      background: #fff; transform: translateX(-50%);
+      box-shadow: 0 0 10px rgba(0,0,0,.35);
+    }
+    .ba-grip {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: #fff; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 16px rgba(0,0,0,.25); position: relative; z-index: 1;
+      color: var(--ink); transition: transform .2s;
+    }
+    .ba-handle:hover .ba-grip { transform: scale(1.1); }
+
+    /* ── WHY ── */
+    #why { background: var(--ink); }
+    #why .sec-label { color: rgba(255,255,255,.3); }
+    #why .sec-label::after { background: rgba(255,255,255,.3); }
+    #why .sec-title { color: #F0F0F0; }
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .why-card {
+      padding: 2.25rem 2rem; border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.04);
+      transition: border-color .3s, background .3s;
+    }
+    .why-card:hover { border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.07); }
+    .why-icon { width: 36px; height: 36px; margin-bottom: 1.25rem; opacity: .55; color: #F0F0F0; }
+    .why-title { font-size: 1rem; font-weight: 600; letter-spacing: -.01em; color: #F0F0F0; margin-bottom: .5rem; }
+    .why-desc { font-size: .875rem; color: #ABABAB; line-height: 1.7; }
+
+    /* ── GALLERY ── */
+    #gallery { background: var(--bg); }
+    .gal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; margin-top: 2.5rem; }
+    .gal-item { position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--bg3); }
+    .gal-item:first-child { grid-column: span 2; aspect-ratio: 8/3; }
+    .gal-item.full-w { grid-column: 1 / -1; aspect-ratio: 21/9; }
+    .gal-item img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .8s cubic-bezier(.22,.68,0,1.1);
+    }
+    .gal-item:hover img { transform: scale(1.07); }
+    .gal-item::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.6) 0%, transparent 55%);
+      opacity: 0; transition: opacity .4s ease;
+    }
+    .gal-item:hover::after { opacity: 1; }
+    .gal-lbl {
+      position: absolute; bottom: 1.25rem; left: 1.5rem; z-index: 1;
+      font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+      color: #fff; opacity: 0; transform: translateY(6px);
+      transition: opacity .4s ease, transform .4s ease;
+    }
+    .gal-item:hover .gal-lbl { opacity: 1; transform: none; }
+
+    /* ── REVIEWS ── */
+    #reviews { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .rev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .rev-card {
+      background: var(--bg); border: 1px solid var(--border); padding: 2rem;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+    }
+    .rev-card:hover { border-color: var(--ink-m); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,.08); }
+    .rev-stars { color: var(--accent); letter-spacing: 2px; font-size: .875rem; margin-bottom: 1rem; }
+    .rev-text { font-size: .875rem; font-style: italic; font-weight: 300; color: var(--ink-d); line-height: 1.72; margin-bottom: 1.5rem; }
+    .rev-author { font-size: .72rem; font-weight: 600; letter-spacing: .04em; color: var(--ink); }
+    .rev-loc { font-size: .65rem; letter-spacing: .1em; color: var(--ink-m); margin-top: .2rem; }
+    .rev-header { display: flex; align-items: baseline; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .rev-header .sec-title { margin-bottom: 0; }
+    #revGoogleBadge {
+      display: none; align-items: center; gap: .5rem;
+      font-size: .72rem; font-weight: 500; letter-spacing: .04em; color: var(--ink-m);
+      text-decoration: none; cursor: pointer;
+      padding: .35rem .75rem; border: 1px solid var(--border); background: var(--bg);
+      transition: border-color .2s, color .2s;
+    }
+    #revGoogleBadge:hover { border-color: var(--ink-m); color: var(--ink); }
+    .rev-g-stars { color: #F4B400; letter-spacing: 1px; margin-right: .1em; }
+    @keyframes rev-fade { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+    .rev-card.gmb-loaded { animation: rev-fade .5s cubic-bezier(.22,.68,0,1.2) both; }
+    .rev-card.gmb-loaded:nth-child(2) { animation-delay: .08s; }
+    .rev-card.gmb-loaded:nth-child(3) { animation-delay: .16s; }
+    .rev-card.gmb-loaded:nth-child(4) { animation-delay: .24s; }
+    .rev-card.gmb-loaded:nth-child(5) { animation-delay: .32s; }
+    .rev-card.gmb-loaded:nth-child(6) { animation-delay: .40s; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; margin-top: 2.5rem; align-items: start; }
+    .contact-h { font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 700; letter-spacing: -.025em; line-height: 1.2; color: var(--ink); margin-bottom: 1.25rem; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: .875rem;
+      padding: .875rem 0; border-bottom: 1px solid var(--border);
+      font-size: .875rem; color: var(--ink-m);
+      transition: color .2s;
+    }
+    .contact-item:hover { color: var(--ink); }
+    .contact-item svg { flex-shrink: 0; opacity: .4; margin-top: 1px; }
+    .contact-item a { color: inherit; text-decoration: none; }
+    .form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .fg { display: flex; flex-direction: column; gap: .375rem; }
+    .fg label { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-m); font-weight: 500; }
+    .fg input, .fg select, .fg textarea {
+      background: var(--white); border: 1px solid var(--border); color: var(--ink);
+      padding: .8rem 1rem; font-family: var(--font); font-size: .875rem; font-weight: 300;
+      outline: none; transition: border-color .2s, box-shadow .2s; width: 100%;
+      appearance: none; -webkit-appearance: none;
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus {
+      border-color: var(--ink-m);
+      box-shadow: 0 0 0 3px rgba(26,26,26,.06);
+    }
+    .fg select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236A6A6A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 1rem center; cursor: pointer;
+    }
+    .fg select option { background: var(--white); }
+    .fg textarea { resize: vertical; min-height: 110px; }
+    ::placeholder { color: var(--ink-m); opacity: .6; }
+    .btn-wa {
+      background: var(--green); color: #fff; padding: 1rem;
+      font-family: var(--font); font-size: .78rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; border: none; cursor: pointer; width: 100%;
+      display: flex; align-items: center; justify-content: center; gap: .6rem;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn-wa:hover { opacity: .92; transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); padding: 4rem 0 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; color: #F0F0F0; margin-bottom: 1rem; }
+    .footer-logo .logo-name { color: #F0F0F0; }
+    .footer-logo .logo-sub { color: #6A6A6A; }
+    .footer-tagline { font-size: .8rem; color: #6A6A6A; line-height: 1.65; max-width: 280px; }
+    .footer-col-h { font-size: .6rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: #6A6A6A; margin-bottom: 1rem; }
+    .footer-link { display: block; color: #ABABAB; text-decoration: none; font-size: .82rem; margin-bottom: .5rem; transition: color .2s; }
+    .footer-link:hover { color: #F0F0F0; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1.75rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: .7rem; color: #6A6A6A; letter-spacing: .04em; }
+
+    /* ── WA FLOAT ── */
+    .wa-float {
+      position: fixed; bottom: 2rem; right: 2rem;
+      width: 54px; height: 54px; border-radius: 50%;
+      background: var(--green); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; z-index: 200;
+      box-shadow: 0 4px 24px rgba(37,211,102,.35);
+      transition: transform .25s cubic-bezier(.22,.68,0,1.4), box-shadow .2s;
+    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,.4); }
+    .wa-float::before {
+      content: ''; position: absolute; inset: -5px; border-radius: 50%;
+      border: 1.5px solid rgba(37,211,102,.35);
+      animation: wa-pulse 2s ease-in-out infinite;
+    }
+    @keyframes wa-pulse {
+      0%, 100% { transform: scale(1); opacity: .5; }
+      50% { transform: scale(1.15); opacity: 0; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      #hero { grid-template-columns: 1fr; height: auto; }
+      .hero-right { height: 55vw; min-height: 320px; }
+      .hero-left { padding: 3rem 2rem; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .rev-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-phone { display: none; }
+      .hamburger { display: flex; }
+      .svc-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .gal-grid { grid-template-columns: 1fr 1fr; }
+      .gal-item:first-child { grid-column: span 2; }
+      .gal-item.full-w { aspect-ratio: 16/9; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: .5rem; }
+      .ba-lead { grid-template-columns: 1fr; gap: 1rem; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="badge">Coming Soon</div>
-    <h1 style="margin-top: 1.5rem;">Nagy <span>Custom</span> Remodels</h1>
-    <p>We're putting the finishing touches on our new website.<br>Check back soon.</p>
-    <p class="location">Jacksonville, FL</p>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <svg viewBox="0 0 60 50" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="4,27 30,7 56,27"/>
+        <line x1="11" y1="23" x2="11" y2="46"/>
+        <line x1="49" y1="23" x2="49" y2="46"/>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-name">NAGY</span>
+        <span class="logo-sub">Custom Remodeling</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Portfolio</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="tel:+19045771257" class="nav-phone">(904) 577-1257</a>
+      <a href="#contact" class="btn-nav">Free Quote</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="#services" onclick="closeMob()">Services</a>
+  <a href="#gallery" onclick="closeMob()">Portfolio</a>
+  <a href="#reviews" onclick="closeMob()">Reviews</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+  <a href="tel:+19045771257" onclick="closeMob()">(904) 577-1257</a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <div class="hero-left">
+    <span class="hero-eyebrow hero-anim" style="transition-delay:.05s">Jacksonville, Florida</span>
+    <h1 class="hero-h1">
+      <span class="hero-anim" style="display:block;transition-delay:.15s">Your Home.</span>
+      <span class="hero-anim" style="display:block;transition-delay:.25s">Done Right.</span>
+      <em class="hero-anim" style="display:block;transition-delay:.35s">Zero Mess.</em>
+    </h1>
+    <p class="hero-sub hero-anim" style="transition-delay:.45s">Kitchen, bathroom &amp; flooring remodeling delivered on time, on budget — with a clean site every single day.</p>
+    <div class="hero-cta-row hero-anim" style="transition-delay:.55s">
+      <a href="#contact" class="btn-primary">Get Free Quote</a>
+      <a href="#gallery" class="hero-link">
+        See Our Work
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+      </a>
+    </div>
+    <div class="hero-stats hero-anim" style="transition-delay:.65s">
+      <div class="hero-stat">
+        <span class="hero-stat-num" data-count="250" data-suffix="+">250+</span>
+        <span class="hero-stat-lbl">Projects Done</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num" id="heroRating">5.0★</span>
+        <span class="hero-stat-lbl">Google Rating</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num" data-count="10" data-suffix="yr">10yr</span>
+        <span class="hero-stat-lbl">Experience</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right hero-anim-right">
+    <img src="assets/kitchen-remodel-white-cabinets-island.jpeg" alt="Kitchen remodel by Nagy Custom Remodeling" id="heroImg">
+    <div class="hero-badge" id="heroBadge">
+      <span class="hero-badge-num">200+</span>
+      <span class="hero-badge-lbl">Happy Clients</span>
+      <span class="hero-badge-stars">★★★★★</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SERVICES ═══════════ -->
+<section id="services">
+  <div class="container">
+    <div class="sec-label reveal">What We Do</div>
+    <h2 class="sec-title reveal d1">Our Services</h2>
+    <div class="svc-grid">
+      <div class="svc-card reveal d1">
+        <div class="svc-num">01</div>
+        <svg class="svc-icon" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="10" width="30" height="22" rx="1"/>
+          <path d="M4 16h30M14 16v16M4 10c0-2.2 1.8-4 4-4h22c2.2 0 4 1.8 4 4"/>
+          <circle cx="9" cy="13" r="1" fill="currentColor" stroke="none"/>
+          <circle cx="14" cy="13" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        <h3 class="svc-title">Kitchen Remodeling</h3>
+        <p class="svc-desc">Custom cabinets, countertops &amp; complete kitchen transformations tailored to your style and budget.</p>
+      </div>
+      <div class="svc-card reveal d2">
+        <div class="svc-num">02</div>
+        <svg class="svc-icon" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 28 Q6 20 14 20 L14 10 Q14 6 18 6 Q22 6 22 10 L22 12"/>
+          <path d="M6 28 h26 Q32 34 26 34 H12 Q6 34 6 28z"/>
+          <path d="M22 12 Q26 12 26 16 L26 28"/>
+          <line x1="6" y1="28" x2="32" y2="28"/>
+        </svg>
+        <h3 class="svc-title">Bathroom Remodeling</h3>
+        <p class="svc-desc">Luxury showers, vanities &amp; full bathroom renovations that add comfort and lasting value.</p>
+      </div>
+      <div class="svc-card reveal d3">
+        <div class="svc-num">03</div>
+        <svg class="svc-icon" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="4" width="13" height="13"/>
+          <rect x="21" y="4" width="13" height="13"/>
+          <rect x="4" y="21" width="13" height="13"/>
+          <rect x="21" y="21" width="13" height="13"/>
+        </svg>
+        <h3 class="svc-title">Flooring</h3>
+        <p class="svc-desc">Hardwood, tile, vinyl plank &amp; more — installed to perfection in every room of your home.</p>
+      </div>
+      <div class="svc-card reveal d4">
+        <div class="svc-num">04</div>
+        <svg class="svc-icon" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="4,20 19,7 34,20"/>
+          <polyline points="8,17 8,34 30,34 30,17"/>
+          <rect x="15" y="24" width="8" height="10"/>
+        </svg>
+        <h3 class="svc-title">Whole Home Renovation</h3>
+        <p class="svc-desc">Complete home makeovers from concept to completion — one team, one vision, zero hassle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ BEFORE / AFTER ═══════════ -->
+<section id="before-after">
+  <div class="container">
+    <div class="ba-lead">
+      <div>
+        <div class="sec-label reveal">Real Transformations</div>
+        <h2 class="sec-title reveal d1" style="margin-bottom:0">Before &amp; After</h2>
+      </div>
+      <p class="ba-intro reveal d2">Drag the slider to see the transformation. Every project is completed with a clean work site — no mess, no stress, just results.</p>
+    </div>
+    <div class="ba-slider reveal scale-in d1" id="baSlider">
+      <div class="ba-before">
+        <img src="assets/studio-basement-renovation-drywall.jpeg" alt="Before renovation">
+        <span class="ba-tag ba-tag-before">Before</span>
+      </div>
+      <div class="ba-after" id="baAfter">
+        <img src="assets/kitchen-remodel-white-cabinets-island.jpeg" alt="After renovation">
+        <span class="ba-tag ba-tag-after">After</span>
+      </div>
+      <div class="ba-handle" id="baHandle">
+        <div class="ba-line"></div>
+        <div class="ba-grip">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9,18 3,12 9,6"/>
+            <polyline points="15,6 21,12 15,18"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ WHY ═══════════ -->
+<section id="why">
+  <div class="container">
+    <div class="sec-label reveal">Our Commitment</div>
+    <h2 class="sec-title reveal d1">Why Choose Nagy</h2>
+    <div class="why-grid">
+      <div class="why-card reveal d1">
+        <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 4 L28 8 L28 18 Q28 27 18 32 Q8 27 8 18 L8 8 Z"/>
+          <polyline points="13,18 17,22 24,14"/>
+        </svg>
+        <h3 class="why-title">Licensed &amp; Insured</h3>
+        <p class="why-desc">Fully licensed contractor in the state of Florida. Your home and investment are always protected.</p>
+      </div>
+      <div class="why-card reveal d2">
+        <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="18,4 22,14 33,14 24,21 27,32 18,25 9,32 12,21 3,14 14,14"/>
+        </svg>
+        <h3 class="why-title">5-Star Rated</h3>
+        <p class="why-desc">Consistently 5-star reviews from Jacksonville homeowners. Our reputation is built one project at a time.</p>
+      </div>
+      <div class="why-card reveal d3">
+        <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="18" r="14"/>
+          <path d="M12 18 Q12 12 18 12 Q24 12 24 18"/>
+          <path d="M12 20 Q14 26 18 26 Q22 26 24 20"/>
+          <line x1="10" y1="18" x2="26" y2="18"/>
+        </svg>
+        <h3 class="why-title">Bilingual Team</h3>
+        <p class="why-desc">We speak English &amp; Portuguese. Serving all of Jacksonville and surrounding areas with clear communication.</p>
+      </div>
+      <div class="why-card reveal d4">
+        <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 28 L28 28"/>
+          <path d="M10 28 L10 16 Q10 10 18 10 Q26 10 26 16 L26 28"/>
+          <path d="M14 22 Q18 18 22 22"/>
+          <line x1="18" y1="10" x2="18" y2="6"/>
+          <line x1="12" y1="8" x2="14" y2="11"/>
+          <line x1="24" y1="8" x2="22" y2="11"/>
+        </svg>
+        <h3 class="why-title">Clean Work Site</h3>
+        <p class="why-desc">We protect your home and clean up completely every single day. Zero mess. Zero stress. Just results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ GALLERY ═══════════ -->
+<section id="gallery">
+  <div class="container">
+    <div class="sec-label reveal">Our Work</div>
+    <h2 class="sec-title reveal d1">Recent Projects</h2>
+    <div class="gal-grid">
+      <!-- Row 1: wide feature + tall -->
+      <div class="gal-item reveal d1">
+        <img src="assets/kitchen-remodel-white-cabinets-island.jpeg" alt="Kitchen Remodel">
+        <span class="gal-lbl">Kitchen Remodel</span>
+      </div>
+      <div class="gal-item reveal d2">
+        <img src="assets/bathroom-shower-glass-enclosure-renovation.jpeg" alt="Bathroom Renovation">
+        <span class="gal-lbl">Bathroom Renovation</span>
+      </div>
+      <!-- Row 2 -->
+      <div class="gal-item reveal d1">
+        <img src="assets/flooring-hardwood-deck-wooden-ceiling.jpeg" alt="Hardwood Flooring">
+        <span class="gal-lbl">Hardwood Flooring</span>
+      </div>
+      <div class="gal-item reveal d2">
+        <img src="assets/kitchen-island-black-countertop-pendant.jpeg" alt="Kitchen Island">
+        <span class="gal-lbl">Kitchen Island</span>
+      </div>
+      <div class="gal-item reveal d3">
+        <img src="assets/bathroom-vanity-marble-countertop-luxury.jpeg" alt="Luxury Vanity">
+        <span class="gal-lbl">Luxury Vanity</span>
+      </div>
+      <!-- Row 3 -->
+      <div class="gal-item reveal d1">
+        <img src="assets/living-room-fireplace-modern-accent-wall.jpeg" alt="Living Room">
+        <span class="gal-lbl">Living Room</span>
+      </div>
+      <div class="gal-item reveal d2">
+        <img src="assets/bathroom-shower-tile-marble-walk-in.jpeg" alt="Walk-In Shower">
+        <span class="gal-lbl">Walk-In Shower</span>
+      </div>
+      <div class="gal-item reveal d3">
+        <img src="assets/interior-accent-wall-wood-siding-modern.jpeg" alt="Accent Wall">
+        <span class="gal-lbl">Interior Accent Wall</span>
+      </div>
+      <!-- Panoramic closer -->
+      <div class="gal-item full-w reveal d1">
+        <img src="assets/exterior-home-white-modern-facade-driveway.jpeg" alt="Exterior Renovation">
+        <span class="gal-lbl">Exterior Renovation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ REVIEWS ═══════════ -->
+<section id="reviews">
+  <div class="container">
+    <div class="sec-label reveal">What Clients Say</div>
+    <div class="rev-header reveal d1">
+      <h2 class="sec-title" style="margin-bottom:0">5-Star Reviews</h2>
+      <a id="revGoogleBadge" href="#" target="_blank" rel="noopener" aria-label="See all reviews on Google">
+        <span class="rev-g-stars">★</span>
+        <span id="revRatingText">See all on Google</span>
+      </a>
+    </div>
+    <!-- Static fallback reviews — replaced by GMB when API key + Place ID are configured -->
+    <div class="rev-grid" id="revGrid">
+      <div class="rev-card reveal d1">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">"Nagy completely transformed our kitchen. The attention to detail was incredible — every cabinet, every countertop edge, exactly as we envisioned. I had 3 other contractors bid, but the moment I met the team I knew they were different."</p>
+        <div class="rev-author">Sarah M.</div>
+        <div class="rev-loc">Ponte Vedra Beach, FL</div>
+      </div>
+      <div class="rev-card reveal d2">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">"Our master bathroom is absolutely stunning. The tile work is beautiful, the shower turned out better than the design we picked. Professional, clean, on time. Already recommended to three neighbors."</p>
+        <div class="rev-author">Michael &amp; Dana T.</div>
+        <div class="rev-loc">St. Johns, FL</div>
+      </div>
+      <div class="rev-card reveal d3">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">"We hired Nagy for a full home renovation — kitchen, two bathrooms, and all the flooring. The team was efficient, incredibly clean, and communicated every step of the process. Best decision we made."</p>
+        <div class="rev-author">Jennifer R.</div>
+        <div class="rev-loc">Nocatee, FL</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-label reveal">Free Estimate</div>
+    <h2 class="sec-title reveal d1">Get a Quote</h2>
+    <div class="contact-grid">
+      <div class="reveal d1">
+        <h3 class="contact-h">Ready to start<br>your project?</h3>
+        <p style="font-size:.875rem;color:var(--ink-m);line-height:1.8;margin-bottom:1.75rem;">Fill out the form and we'll get back to you within 24 hours with a free, no-obligation estimate.</p>
+        <div class="contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.36 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.07 6.07l1.41-1.41a2 2 0 012.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          <a href="tel:+19045771257">(904) 577-1257</a>
+        </div>
+        <div class="contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Jacksonville, FL &amp; surrounding areas</span>
+        </div>
+        <div class="contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <a href="https://instagram.com/nagycustomremodels" target="_blank" rel="noopener">@nagycustomremodels</a>
+        </div>
+        <div class="contact-item" style="border-bottom:none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+          <span>Mon–Fri 8am–6pm &nbsp;|&nbsp; Sat 8am–1pm</span>
+        </div>
+      </div>
+      <form class="form reveal d2" id="quoteForm" novalidate>
+        <div class="form-row">
+          <div class="fg"><label for="fname">Full Name *</label><input type="text" id="fname" name="name" placeholder="John Smith" required></div>
+          <div class="fg"><label for="fphone">Phone *</label><input type="tel" id="fphone" name="phone" placeholder="(904) 000-0000" required></div>
+        </div>
+        <div class="fg"><label for="femail">Email</label><input type="email" id="femail" name="email" placeholder="john@email.com"></div>
+        <div class="fg">
+          <label for="fservice">Service Needed *</label>
+          <select id="fservice" name="service" required>
+            <option value="" disabled selected>Select a service...</option>
+            <option value="Kitchen Remodeling">Kitchen Remodeling</option>
+            <option value="Bathroom Remodeling">Bathroom Remodeling</option>
+            <option value="Flooring">Flooring</option>
+            <option value="Whole Home Renovation">Whole Home Renovation</option>
+            <option value="Other">Other / Not sure yet</option>
+          </select>
+        </div>
+        <div class="fg"><label for="fmsg">Tell Us About Your Project</label><textarea id="fmsg" name="message" placeholder="Describe your project, timeline, or any questions you have..."></textarea></div>
+        <button type="submit" class="btn-wa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.102 1.522 5.83L.057 23.855a.5.5 0 00.607.607l6.025-1.465A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.659-.516-5.178-1.415l-.372-.221-3.85.937.957-3.849-.236-.385A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Send via WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="footer-logo">
+          <svg width="34" height="28" viewBox="0 0 60 50" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4,27 30,7 56,27"/>
+            <line x1="11" y1="23" x2="11" y2="46"/>
+            <line x1="49" y1="23" x2="49" y2="46"/>
+          </svg>
+          <div class="logo-text">
+            <span class="logo-name">NAGY</span>
+            <span class="logo-sub">Custom Remodeling</span>
+          </div>
+        </a>
+        <p class="footer-tagline">Premium kitchen, bathroom &amp; flooring remodeling in Jacksonville, FL. Licensed, insured, and bilingual.</p>
+      </div>
+      <div>
+        <p class="footer-col-h">Services</p>
+        <a href="#services" class="footer-link">Kitchen Remodeling</a>
+        <a href="#services" class="footer-link">Bathroom Remodeling</a>
+        <a href="#services" class="footer-link">Flooring</a>
+        <a href="#services" class="footer-link">Whole Home Renovation</a>
+      </div>
+      <div>
+        <p class="footer-col-h">Contact</p>
+        <a href="tel:+19045771257" class="footer-link">(904) 577-1257</a>
+        <a href="https://instagram.com/nagycustomremodels" target="_blank" rel="noopener" class="footer-link">@nagycustomremodels</a>
+        <span class="footer-link" style="cursor:default;">Jacksonville, FL</span>
+        <span class="footer-link" style="cursor:default;">Mon–Sat 8am–6pm</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© <span id="footerYear">2025</span> Nagy Custom Remodeling · Jacksonville, FL · Licensed &amp; Insured</p>
+      <p class="footer-copy">Designed in Jacksonville</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════ WA FLOAT ═══════════ -->
+<a href="https://wa.me/19045771257?text=Hi%2C%20I%27d%20like%20a%20free%20quote!" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.102 1.522 5.83L.057 23.855a.5.5 0 00.607.607l6.025-1.465A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.659-.516-5.178-1.415l-.372-.221-3.85.937.957-3.849-.236-.385A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<script>
+  // ── Hamburger ──
+  const ham = document.getElementById('hamburger');
+  const mob = document.getElementById('mobMenu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    mob.classList.toggle('open');
+  });
+  function closeMob() {
+    ham.classList.remove('open');
+    mob.classList.remove('open');
+  }
+
+  // ── Hero entrance + stat counters ──
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.hero-anim').forEach(el => el.classList.add('loaded'));
+    document.querySelectorAll('.hero-anim-right').forEach(el => el.classList.add('loaded'));
+    setTimeout(() => document.getElementById('heroBadge').classList.add('loaded'), 700);
+
+    // Dynamic copyright year
+    const fy = document.getElementById('footerYear');
+    if (fy) fy.textContent = new Date().getFullYear();
+
+    // Animate number counters in hero stats
+    setTimeout(() => {
+      document.querySelectorAll('.hero-stat-num[data-count]').forEach(function(el) {
+        const target = parseInt(el.getAttribute('data-count'), 10);
+        const suffix = el.getAttribute('data-suffix') || '';
+        const duration = 1400;
+        const start = performance.now();
+        function tick(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          // ease-out cubic
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    }, 600);
+  });
+
+  // ── Scroll reveal ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('active');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ── Hero parallax ──
+  const heroImg = document.getElementById('heroImg');
+  window.addEventListener('scroll', () => {
+    const s = window.pageYOffset;
+    if (s < window.innerHeight && heroImg) {
+      heroImg.style.transform = 'translateY(' + (s * 0.18) + 'px)';
+    }
+    document.getElementById('mainNav').style.boxShadow =
+      s > 10 ? '0 2px 30px rgba(0,0,0,.08)' : 'none';
+  }, { passive: true });
+
+  // ── Before / After slider ──
+  (function() {
+    const slider = document.getElementById('baSlider');
+    const after  = document.getElementById('baAfter');
+    const handle = document.getElementById('baHandle');
+    if (!slider) return;
+    let dragging = false;
+
+    function setPos(clientX) {
+      const rect = slider.getBoundingClientRect();
+      const pct  = Math.max(2, Math.min(98, (clientX - rect.left) / rect.width * 100));
+      after.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+      handle.style.left    = pct + '%';
+    }
+
+    handle.addEventListener('mousedown',  e => { dragging = true; e.preventDefault(); });
+    document.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
+    document.addEventListener('mouseup',   () => { dragging = false; });
+    handle.addEventListener('touchstart',  e => { dragging = true; e.preventDefault(); });
+    document.addEventListener('touchmove', e => { if (dragging) setPos(e.touches[0].clientX); }, { passive: false });
+    document.addEventListener('touchend',  () => { dragging = false; });
+    slider.addEventListener('click', e => setPos(e.clientX));
+
+    // hint animation — teases the slider when it comes into view
+    let hinted = false;
+    const hintObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !hinted) {
+        hinted = true;
+        let start;
+        function hint(ts) {
+          if (!start) start = ts;
+          const t = (ts - start) / 1000;
+          if (t < 1.4) {
+            const ease = t < 0.7
+              ? 50 - 16 * Math.sin(t / 0.7 * Math.PI)
+              : 34 + 16 * Math.sin((t - 0.7) / 0.7 * Math.PI);
+            after.style.clipPath = 'inset(0 ' + (100 - ease) + '% 0 0)';
+            handle.style.left    = ease + '%';
+            requestAnimationFrame(hint);
+          } else {
+            setPos(slider.getBoundingClientRect().left + slider.getBoundingClientRect().width * 0.5);
+          }
+        }
+        setTimeout(() => requestAnimationFrame(hint), 400);
+      }
+    }, { threshold: 0.4 });
+    hintObserver.observe(slider);
+  })();
+
+  // ── Google My Business Reviews ──
+  // SETUP: When the GMB profile is live, fill in both values below.
+  // 1. API key: console.cloud.google.com → enable "Maps JavaScript API" + "Places API"
+  // 2. Place ID: search the business on maps.google.com → Share → "Copy Place ID"
+  const GMB_API_KEY  = 'AIzaSyAKJy92O1n5YSl1hR_cenI1gcnI7hnpWcY';
+  const GMB_PLACE_ID = 'ChIJI1sfRgfN5Yg0vFNbmlVh4Q';
+
+  if (GMB_API_KEY && GMB_PLACE_ID) {
+    const s = document.createElement('script');
+    s.src   = 'https://maps.googleapis.com/maps/api/js?key=' + GMB_API_KEY + '&libraries=places&callback=_initGMB';
+    s.async = true;
+    document.head.appendChild(s);
+  }
+
+  window._initGMB = function() {
+    const dummy = document.createElement('div');
+    const svc   = new google.maps.places.PlacesService(dummy);
+    svc.getDetails(
+      { placeId: GMB_PLACE_ID, fields: ['reviews', 'rating', 'user_ratings_total', 'url'] },
+      function(place, status) {
+        if (status !== google.maps.places.PlacesServiceStatus.OK) return;
+        const grid = document.getElementById('revGrid');
+        if (!grid || !place.reviews || !place.reviews.length) return;
+
+        // Show Google badge with real rating
+        const badge = document.getElementById('revGoogleBadge');
+        if (badge) {
+          badge.style.display = 'flex';
+          // Only set href to trusted Google domain
+          if (place.url && place.url.startsWith('https://')) badge.href = place.url;
+          const rt = document.getElementById('revRatingText');
+          if (rt && place.rating) {
+            rt.textContent = place.rating.toFixed(1) + ' \u00b7 ' + (place.user_ratings_total || '') + ' reviews on Google';
+          }
+        }
+
+        // Update section title and hero stat
+        const title = document.querySelector('#reviews .sec-title');
+        if (title && place.rating) title.textContent = place.rating.toFixed(1) + ' \u2605 on Google';
+        const heroRating = document.getElementById('heroRating');
+        if (heroRating && place.rating) heroRating.textContent = place.rating.toFixed(1) + '\u2605';
+
+        // Render up to 6 reviews using safe DOM methods (no innerHTML on user content)
+        const toShow = place.reviews.filter(function(r) { return r.rating >= 4; }).slice(0, 6);
+        if (!toShow.length) return; // keep static if no 4+ star reviews
+
+        while (grid.firstChild) grid.removeChild(grid.firstChild); // clear safely
+
+        toShow.forEach(function(r) {
+          const card   = document.createElement('div');
+          card.className = 'rev-card gmb-loaded';
+
+          const stars  = document.createElement('div');
+          stars.className = 'rev-stars';
+          stars.textContent = '\u2605'.repeat(r.rating) + '\u2606'.repeat(5 - r.rating);
+
+          const text   = document.createElement('p');
+          text.className = 'rev-text';
+          text.textContent = '\u201c' + r.text + '\u201d';
+
+          const author = document.createElement('div');
+          author.className = 'rev-author';
+          author.textContent = r.author_name;
+
+          const loc    = document.createElement('div');
+          loc.className = 'rev-loc';
+          loc.textContent = r.relative_time_description;
+
+          card.appendChild(stars);
+          card.appendChild(text);
+          card.appendChild(author);
+          card.appendChild(loc);
+          grid.appendChild(card);
+
+          revealObserver.observe(card);
+        });
+      }
+    );
+  };
+
+  // ── WhatsApp form ──
+  document.getElementById('quoteForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name    = document.getElementById('fname').value.trim();
+    const phone   = document.getElementById('fphone').value.trim();
+    const email   = document.getElementById('femail').value.trim();
+    const service = document.getElementById('fservice').value;
+    const msg     = document.getElementById('fmsg').value.trim();
+    if (!name || !phone || !service) {
+      alert('Please fill in your name, phone number, and service type.');
+      return;
+    }
+    let text = `Hi Nagy Custom Remodeling!\n\nMy name is ${name}.\nI'm interested in: ${service}.\nPhone: ${phone}`;
+    if (email) text += `\nEmail: ${email}`;
+    if (msg)   text += `\n\nMessage: ${msg}`;
+    window.open(`https://wa.me/19045771257?text=${encodeURIComponent(text)}`, '_blank');
+  });
+</script>
 </body>
 </html>
