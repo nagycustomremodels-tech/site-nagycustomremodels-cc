@@ -31,42 +31,15 @@
       padding: 2rem;
     }
 
-    /* ── Logo (icon above text, stacked like the brand mark) ── */
+    /* ── Logo ── */
     .logo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
       text-decoration: none;
       margin-bottom: 3.5rem;
     }
 
-    .logo svg {
-      width: 72px;
-      height: 72px;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      line-height: 1;
-      gap: 4px;
-    }
-
-    .logo-name {
-      font-size: 1.75rem;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      color: var(--text);
-    }
-
-    .logo-sub {
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--muted);
+    .logo img {
+      height: 110px;
+      width: auto;
     }
 
     /* ── Badge ── */
@@ -162,15 +135,8 @@
 </head>
 <body>
 
-  <!-- Official brand mark: icon centered above text -->
   <a href="#" class="logo">
-    <svg viewBox="0 0 60 60" fill="none" stroke="#D0551C" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="8,52 8,28 2,28 30,4 58,28 52,28 52,52"/>
-    </svg>
-    <div class="logo-text">
-      <span class="logo-name">NAGY</span>
-      <span class="logo-sub">Custom Remodeling</span>
-    </div>
+    <img src="assets/logo-original-branco.png" alt="Nagy Custom Remodeling">
   </a>
 
   <div class="badge">Coming Soon</div>
