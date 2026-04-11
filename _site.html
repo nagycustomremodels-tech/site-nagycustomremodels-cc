@@ -6,6 +6,7 @@
   <meta name="description" content="Premium kitchen, bathroom & flooring remodeling in Jacksonville, FL. Licensed & insured. Bilingual team. 5-star rated. Clean work site, zero mess. Get a free quote today.">
   <meta name="keywords" content="kitchen remodeling Jacksonville FL, bathroom remodeling Jacksonville, flooring contractor Jacksonville, home renovation Jacksonville">
   <title>Nagy Custom Remodeling | Jacksonville, FL</title>
+  <link rel="icon" type="image/jpeg" href="assets/favicon.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,11 +89,8 @@
       max-width: var(--max); margin: 0 auto; padding: 0 2rem;
       height: 100%; display: flex; align-items: center; justify-content: space-between;
     }
-    .logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; color: var(--ink); }
-    .logo svg { width: 34px; height: 28px; }
-    .logo-text { display: flex; flex-direction: column; line-height: 1; }
-    .logo-name { font-weight: 600; font-size: .95rem; letter-spacing: .22em; }
-    .logo-sub { font-size: .5rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-m); margin-top: 3px; }
+    .logo { display: flex; align-items: center; text-decoration: none; }
+    .logo img { height: 56px; width: auto; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       color: var(--ink-m); text-decoration: none; font-size: .8rem; letter-spacing: .06em;
@@ -159,7 +157,14 @@
       line-height: 1.05; letter-spacing: -.035em;
       color: var(--ink); margin-bottom: 1.5rem;
     }
-    .hero-h1 em { font-style: normal; font-weight: 300; color: var(--ink-m); }
+    .hero-h1 em {
+      font-style: normal; font-weight: 300;
+      background: linear-gradient(180deg, #f07c3a 0%, #a83c0e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 18px rgba(208,85,28,.45)) drop-shadow(0 0 40px rgba(208,85,28,.18));
+    }
     .hero-sub {
       font-size: .9rem; color: var(--ink-m); line-height: 1.8; max-width: 340px;
       margin-bottom: 2.5rem;
@@ -188,7 +193,15 @@
     .hero-stat { padding-right: 1.5rem; border-right: 1px solid var(--border); }
     .hero-stat:last-child { border-right: none; padding-right: 0; padding-left: 1.5rem; }
     .hero-stat:nth-child(2) { padding-left: 1.5rem; }
-    .hero-stat-num { display: block; font-size: 1.85rem; font-weight: 700; letter-spacing: -.03em; color: var(--ink); line-height: 1; margin-bottom: .3rem; }
+    .hero-stat-num {
+      display: block; font-size: 1.85rem; font-weight: 700; letter-spacing: -.03em;
+      line-height: 1; margin-bottom: .3rem;
+      background: linear-gradient(180deg, #f07c3a 0%, #a83c0e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 14px rgba(208,85,28,.4));
+    }
     .hero-stat-lbl { font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-m); }
     .hero-right { position: relative; overflow: hidden; }
     .hero-right img {
@@ -209,7 +222,14 @@
       transition: opacity .6s ease .8s, transform .6s ease .8s;
     }
     .hero-badge.loaded { opacity: 1; transform: none; }
-    .hero-badge-num { font-size: 1.9rem; font-weight: 700; letter-spacing: -.04em; color: var(--accent); line-height: 1; }
+    .hero-badge-num {
+      font-size: 1.9rem; font-weight: 700; letter-spacing: -.04em; line-height: 1;
+      background: linear-gradient(180deg, #f07c3a 0%, #a83c0e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 16px rgba(208,85,28,.5));
+    }
     .hero-badge-lbl { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-m); }
     .hero-badge-stars { color: var(--accent); font-size: .75rem; letter-spacing: 2px; margin-top: .25rem; }
 
@@ -227,26 +247,58 @@
     .svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
     .svc-card {
       background: var(--white); padding: 2.75rem 2.5rem;
-      position: relative; overflow: hidden; transition: background .3s;
+      position: relative; overflow: hidden;
+      transition: background .3s, transform .35s cubic-bezier(.22,.68,0,1.2), box-shadow .3s;
+      cursor: pointer;
     }
-    .svc-card:hover { background: var(--bg); }
+    .svc-card:hover { background: var(--bg); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.07); }
     .svc-card::after {
       content: ''; position: absolute; bottom: 0; left: 0; right: 0;
       height: 2px; background: var(--accent);
       transform: scaleX(0); transform-origin: left;
-      transition: transform .4s ease;
+      transition: transform .45s cubic-bezier(.22,.68,0,1.1);
     }
     .svc-card:hover::after { transform: scaleX(1); }
     .svc-num {
       position: absolute; top: 1.25rem; right: 2rem;
       font-size: 4rem; font-weight: 700; color: var(--bg2);
       letter-spacing: -.04em; line-height: 1; pointer-events: none;
-      transition: color .3s;
+      transition: color .3s, text-shadow .3s, transform .5s cubic-bezier(.22,.68,0,1.2);
     }
-    .svc-card:hover .svc-num { color: var(--bg3); }
-    .svc-icon { width: 38px; height: 38px; margin-bottom: 1.5rem; opacity: .5; color: var(--ink); }
-    .svc-title { font-size: 1.1rem; font-weight: 600; letter-spacing: -.01em; color: var(--ink); margin-bottom: .6rem; }
+    .svc-card:hover .svc-num {
+      color: rgba(208,85,28,.18);
+      text-shadow: 0 0 32px rgba(208,85,28,.3);
+      transform: scale(1.12) translateY(-4px);
+    }
+    .svc-icon {
+      width: 38px; height: 38px; margin-bottom: 1.5rem;
+      opacity: .5; color: var(--ink);
+      transition: opacity .3s, color .3s, transform .4s cubic-bezier(.22,.68,0,1.4);
+    }
+    .svc-card:hover .svc-icon { opacity: 1; color: var(--accent); transform: scale(1.15) rotate(-8deg); }
+    .svc-title {
+      font-size: 1.1rem; font-weight: 600; letter-spacing: -.01em; color: var(--ink); margin-bottom: .6rem;
+      transition: color .25s;
+    }
+    .svc-card:hover .svc-title { color: var(--accent); }
     .svc-desc { font-size: .875rem; color: var(--ink-m); line-height: 1.7; max-width: 320px; }
+    .svc-also {
+      margin-top: 1px; border: 1px solid var(--border); border-top: none;
+      background: var(--white); padding: 1.5rem 2.5rem;
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .svc-also-label {
+      font-size: .58rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--ink-m); white-space: nowrap;
+    }
+    .svc-chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .svc-chip {
+      font-size: .72rem; font-weight: 500; letter-spacing: .04em;
+      color: var(--ink-d); border: 1px solid var(--border);
+      padding: .35rem .9rem; background: var(--bg);
+      transition: border-color .2s, color .2s;
+    }
+    .svc-chip:hover { border-color: var(--accent); color: var(--accent); }
 
     /* ── BEFORE / AFTER ── */
     #before-after { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -259,6 +311,10 @@
     }
     .ba-before, .ba-after { position: absolute; inset: 0; }
     .ba-before img, .ba-after img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ba-before-img {
+      filter: grayscale(95%) brightness(0.45) contrast(0.72) sepia(40%) hue-rotate(10deg);
+      transform: scale(1.05);
+    }
     .ba-after { clip-path: inset(0 50% 0 0); }
     .ba-tag {
       position: absolute; top: 1.25rem; z-index: 2;
@@ -295,50 +351,151 @@
     .why-card {
       padding: 2.25rem 2rem; border: 1px solid rgba(255,255,255,.1);
       background: rgba(255,255,255,.04);
-      transition: border-color .3s, background .3s;
+      position: relative; overflow: hidden;
+      transition: border-color .35s, background .35s, transform .35s cubic-bezier(.22,.68,0,1.2);
+      cursor: default;
     }
-    .why-card:hover { border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.07); }
-    .why-icon { width: 36px; height: 36px; margin-bottom: 1.25rem; opacity: .55; color: #F0F0F0; }
+    .why-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: var(--accent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .4s ease;
+    }
+    .why-card:hover { border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.07); transform: translateY(-4px); }
+    .why-card:hover::after { transform: scaleX(1); }
+    .why-icon {
+      width: 36px; height: 36px; margin-bottom: 1.25rem;
+      opacity: .55; color: #F0F0F0;
+      transition: opacity .3s, color .3s, transform .4s cubic-bezier(.22,.68,0,1.4);
+    }
+    .why-card:hover .why-icon { opacity: 1; color: var(--accent); transform: scale(1.18) rotate(-6deg); }
     .why-title { font-size: 1rem; font-weight: 600; letter-spacing: -.01em; color: #F0F0F0; margin-bottom: .5rem; }
     .why-desc { font-size: .875rem; color: #ABABAB; line-height: 1.7; }
 
     /* ── GALLERY ── */
     #gallery { background: var(--bg); }
     .gal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; margin-top: 2.5rem; }
-    .gal-item { position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--bg3); }
+    .gal-item { position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--bg3); cursor: zoom-in; }
     .gal-item:first-child { grid-column: span 2; aspect-ratio: 8/3; }
     .gal-item.full-w { grid-column: 1 / -1; aspect-ratio: 21/9; }
     .gal-item img {
       width: 100%; height: 100%; object-fit: cover; display: block;
       transition: transform .8s cubic-bezier(.22,.68,0,1.1);
     }
-    .gal-item:hover img { transform: scale(1.07); }
+    .gal-item:hover img { transform: scale(1.08); }
     .gal-item::after {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.6) 0%, transparent 55%);
-      opacity: 0; transition: opacity .4s ease;
+      background: linear-gradient(to top, rgba(0,0,0,.65) 0%, transparent 55%);
+      opacity: 0; transition: opacity .35s ease;
     }
     .gal-item:hover::after { opacity: 1; }
     .gal-lbl {
       position: absolute; bottom: 1.25rem; left: 1.5rem; z-index: 1;
       font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
       color: #fff; opacity: 0; transform: translateY(6px);
-      transition: opacity .4s ease, transform .4s ease;
+      transition: opacity .35s ease, transform .35s ease;
     }
     .gal-item:hover .gal-lbl { opacity: 1; transform: none; }
+    .gal-zoom {
+      position: absolute; top: 1.1rem; right: 1.1rem; z-index: 2;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(255,255,255,.15); backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: scale(.8);
+      transition: opacity .3s ease, transform .3s ease;
+      color: #fff;
+    }
+    .gal-item:hover .gal-zoom { opacity: 1; transform: scale(1); }
+
+    /* ── LIGHTBOX ── */
+    .lb {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,.94); backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s ease;
+    }
+    .lb.open { opacity: 1; pointer-events: all; }
+    .lb-img {
+      max-width: 90vw; max-height: 88vh;
+      object-fit: contain; display: block;
+      transform: scale(.96);
+      transition: transform .35s cubic-bezier(.22,.68,0,1.2);
+      border-radius: 2px;
+    }
+    .lb.open .lb-img { transform: scale(1); }
+    .lb-close {
+      position: absolute; top: 1.25rem; right: 1.5rem;
+      background: none; border: none; color: rgba(255,255,255,.7);
+      font-size: 2rem; line-height: 1; cursor: pointer;
+      transition: color .2s, transform .2s;
+      padding: .25rem;
+    }
+    .lb-close:hover { color: #fff; transform: rotate(90deg); }
+    .lb-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      color: #fff; width: 48px; height: 48px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; backdrop-filter: blur(6px);
+      transition: background .2s, transform .2s;
+    }
+    .lb-btn:hover { background: rgba(255,255,255,.22); }
+    .lb-prev { left: 1.5rem; }
+    .lb-next { right: 1.5rem; }
+    .lb-btn:active { transform: translateY(-50%) scale(.92); }
+    .lb-caption {
+      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      font-size: .62rem; letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(255,255,255,.5); white-space: nowrap;
+    }
+    .lb-counter {
+      position: absolute; top: 1.4rem; left: 50%; transform: translateX(-50%);
+      font-size: .65rem; letter-spacing: .15em; color: rgba(255,255,255,.4);
+    }
 
     /* ── REVIEWS ── */
     #reviews { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .rev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
     .rev-card {
-      background: var(--bg); border: 1px solid var(--border); padding: 2rem;
-      transition: border-color .25s, transform .25s, box-shadow .25s;
+      background: var(--white); border: 1px solid var(--border); padding: 1.5rem;
+      border-radius: 4px;
+      position: relative; overflow: hidden;
+      transition: transform .3s cubic-bezier(.22,.68,0,1.2), box-shadow .25s;
+      cursor: default;
     }
-    .rev-card:hover { border-color: var(--ink-m); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,.08); }
-    .rev-stars { color: var(--accent); letter-spacing: 2px; font-size: .875rem; margin-bottom: 1rem; }
-    .rev-text { font-size: .875rem; font-style: italic; font-weight: 300; color: var(--ink-d); line-height: 1.72; margin-bottom: 1.5rem; }
-    .rev-author { font-size: .72rem; font-weight: 600; letter-spacing: .04em; color: var(--ink); }
-    .rev-loc { font-size: .65rem; letter-spacing: .1em; color: var(--ink-m); margin-top: .2rem; }
+    .rev-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,.1); }
+
+    /* Google-style header */
+    .rev-header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    .rev-user { display: flex; align-items: center; gap: .75rem; }
+    .rev-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem; font-weight: 700; color: #fff;
+      flex-shrink: 0; letter-spacing: 0;
+    }
+    .rev-user-info { display: flex; flex-direction: column; gap: 1px; }
+    .rev-author { font-size: .85rem; font-weight: 600; color: var(--ink); letter-spacing: 0; }
+    .rev-loc { font-size: .72rem; color: var(--ink-m); margin-top: 0; }
+
+    /* Google G logo */
+    .rev-g-logo { flex-shrink: 0; opacity: .75; }
+
+    /* Stars row */
+    .rev-stars-row { display: flex; align-items: center; gap: .5rem; margin-bottom: .9rem; }
+    .rev-stars { color: #FBBC04; font-size: 1rem; letter-spacing: 1px; line-height: 1; }
+    .rev-date { font-size: .7rem; color: var(--ink-m); }
+
+    .rev-text { font-size: .85rem; font-style: normal; font-weight: 400; color: var(--ink-d); line-height: 1.65; margin-bottom: 0; }
+
+    @keyframes rev-fade { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+    .rev-card.gmb-loaded { animation: rev-fade .5s cubic-bezier(.22,.68,0,1.2) both; }
+    .rev-card.gmb-loaded:nth-child(2) { animation-delay: .08s; }
+    .rev-card.gmb-loaded:nth-child(3) { animation-delay: .16s; }
+    .rev-card.gmb-loaded:nth-child(4) { animation-delay: .24s; }
+    .rev-card.gmb-loaded:nth-child(5) { animation-delay: .32s; }
+    .rev-card.gmb-loaded:nth-child(6) { animation-delay: .40s; }
     .rev-header { display: flex; align-items: baseline; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
     .rev-header .sec-title { margin-bottom: 0; }
     #revGoogleBadge {
@@ -360,8 +517,10 @@
 
     /* ── CONTACT ── */
     #contact { background: var(--bg); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; margin-top: 2.5rem; align-items: start; }
-    .contact-h { font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 700; letter-spacing: -.025em; line-height: 1.2; color: var(--ink); margin-bottom: 1.25rem; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.55fr; gap: 5rem; align-items: start; }
+    #contact .sec-label { margin-bottom: .75rem; }
+    #contact .sec-title { margin-bottom: 1rem; }
+    .contact-sub { font-size: .875rem; color: var(--ink-m); line-height: 1.8; margin-bottom: 1.75rem; }
     .contact-item {
       display: flex; align-items: flex-start; gap: .875rem;
       padding: .875rem 0; border-bottom: 1px solid var(--border);
@@ -382,8 +541,9 @@
       appearance: none; -webkit-appearance: none;
     }
     .fg input:focus, .fg select:focus, .fg textarea:focus {
-      border-color: var(--ink-m);
-      box-shadow: 0 0 0 3px rgba(26,26,26,.06);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(208,85,28,.15);
+      outline: none;
     }
     .fg select {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236A6A6A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
@@ -393,21 +553,27 @@
     .fg textarea { resize: vertical; min-height: 110px; }
     ::placeholder { color: var(--ink-m); opacity: .6; }
     .btn-wa {
-      background: var(--green); color: #fff; padding: 1rem;
+      background: var(--accent); color: #fff; padding: 1rem 1.5rem;
       font-family: var(--font); font-size: .78rem; font-weight: 600; letter-spacing: .1em;
       text-transform: uppercase; border: none; cursor: pointer; width: 100%;
       display: flex; align-items: center; justify-content: center; gap: .6rem;
-      transition: opacity .2s, transform .2s;
+      transition: filter .2s, transform .2s;
     }
-    .btn-wa:hover { opacity: .92; transform: translateY(-1px); }
+    .btn-wa:hover:not(:disabled) { filter: brightness(1.08); transform: translateY(-1px); }
+    .btn-wa:disabled { opacity: .65; cursor: not-allowed; transform: none; }
+    .btn-label-sending, .btn-label-done { display: none; }
+    .btn-wa[data-state="sending"] .btn-label-idle { display: none; }
+    .btn-wa[data-state="sending"] .btn-label-sending { display: inline; }
+    .btn-wa[data-state="done"] .btn-label-idle { display: none; }
+    .btn-wa[data-state="done"] .btn-label-done { display: inline-flex; align-items: center; gap: .5rem; }
+    .btn-wa[data-state="done"] { background: #a84012; }
 
     /* ── FOOTER ── */
     footer { background: var(--ink); padding: 4rem 0 2rem; }
     .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-    .footer-logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; color: #F0F0F0; margin-bottom: 1rem; }
-    .footer-logo .logo-name { color: #F0F0F0; }
-    .footer-logo .logo-sub { color: #6A6A6A; }
-    .footer-tagline { font-size: .8rem; color: #6A6A6A; line-height: 1.65; max-width: 280px; }
+    .footer-logo { display: inline-flex; text-decoration: none; margin-bottom: 1rem; }
+    .footer-logo img { height: 100px; width: auto; }
+    .footer-tagline { font-size: .8rem; color: #ABABAB; line-height: 1.65; max-width: 280px; }
     .footer-col-h { font-size: .6rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: #6A6A6A; margin-bottom: 1rem; }
     .footer-link { display: block; color: #ABABAB; text-decoration: none; font-size: .82rem; margin-bottom: .5rem; transition: color .2s; }
     .footer-link:hover { color: #F0F0F0; }
@@ -433,6 +599,23 @@
     @keyframes wa-pulse {
       0%, 100% { transform: scale(1); opacity: .5; }
       50% { transform: scale(1.15); opacity: 0; }
+    }
+
+    /* ── REDUCED MOTION ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      .hero-anim, .hero-anim-right { opacity: 1; transform: none; }
+    }
+
+    /* ── GALLERY: labels always visible on touch devices ── */
+    @media (hover: none) {
+      .gal-item::after { opacity: 1; }
+      .gal-lbl { opacity: 1; transform: none; }
     }
 
     /* ── RESPONSIVE ── */
@@ -466,15 +649,7 @@
 <nav id="mainNav">
   <div class="nav-inner">
     <a href="#" class="logo">
-      <svg viewBox="0 0 60 50" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="4,27 30,7 56,27"/>
-        <line x1="11" y1="23" x2="11" y2="46"/>
-        <line x1="49" y1="23" x2="49" y2="46"/>
-      </svg>
-      <div class="logo-text">
-        <span class="logo-name">NAGY</span>
-        <span class="logo-sub">Custom Remodeling</span>
-      </div>
+      <img src="assets/logo-original.png" alt="Nagy Custom Remodeling">
     </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
@@ -509,7 +684,7 @@
       <span class="hero-anim" style="display:block;transition-delay:.25s">Done Right.</span>
       <em class="hero-anim" style="display:block;transition-delay:.35s">Zero Mess.</em>
     </h1>
-    <p class="hero-sub hero-anim" style="transition-delay:.45s">Kitchen, bathroom &amp; flooring remodeling delivered on time, on budget — with a clean site every single day.</p>
+    <p class="hero-sub hero-anim" style="transition-delay:.45s">Kitchen, bathroom, flooring, tile, drywall &amp; more — delivered on time, on budget, with a clean site every single day.</p>
     <div class="hero-cta-row hero-anim" style="transition-delay:.55s">
       <a href="#contact" class="btn-primary">Get Free Quote</a>
       <a href="#gallery" class="hero-link">
@@ -533,7 +708,7 @@
     </div>
   </div>
   <div class="hero-right hero-anim-right">
-    <img src="assets/kitchen-remodel-white-cabinets-island.jpeg" alt="Kitchen remodel by Nagy Custom Remodeling" id="heroImg">
+    <img src="assets/kitchen-remodel-white-cabinets-island.jpeg" alt="Kitchen remodel by Nagy Custom Remodeling" id="heroImg" fetchpriority="high">
     <div class="hero-badge" id="heroBadge">
       <span class="hero-badge-num">200+</span>
       <span class="hero-badge-lbl">Happy Clients</span>
@@ -592,6 +767,17 @@
         <p class="svc-desc">Complete home makeovers from concept to completion — one team, one vision, zero hassle.</p>
       </div>
     </div>
+    <div class="svc-also reveal">
+      <span class="svc-also-label">Also Offering</span>
+      <div class="svc-chips">
+        <span class="svc-chip">Tile Work</span>
+        <span class="svc-chip">Trim &amp; Finish</span>
+        <span class="svc-chip">Interior Painting</span>
+        <span class="svc-chip">Drywall</span>
+        <span class="svc-chip">Demolition</span>
+        <span class="svc-chip">Decking</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -607,11 +793,11 @@
     </div>
     <div class="ba-slider reveal scale-in d1" id="baSlider">
       <div class="ba-before">
-        <img src="assets/studio-basement-renovation-drywall.jpeg" alt="Before renovation">
+        <img src="assets/kitchen-remodel-white-cabinets-island.jpeg" alt="Before renovation" loading="lazy" class="ba-before-img">
         <span class="ba-tag ba-tag-before">Before</span>
       </div>
       <div class="ba-after" id="baAfter">
-        <img src="assets/kitchen-remodel-white-cabinets-island.jpeg" alt="After renovation">
+        <img src="assets/kitchen-remodel-white-cabinets-island.jpeg" alt="After renovation" loading="lazy">
         <span class="ba-tag ba-tag-after">After</span>
       </div>
       <div class="ba-handle" id="baHandle">
@@ -681,44 +867,50 @@
     <h2 class="sec-title reveal d1">Recent Projects</h2>
     <div class="gal-grid">
       <!-- Row 1: wide feature + tall -->
-      <div class="gal-item reveal d1">
-        <img src="assets/kitchen-remodel-white-cabinets-island.jpeg" alt="Kitchen Remodel">
+      <div class="gal-item reveal d1" data-src="assets/kitchen-remodel-white-cabinets-island.jpeg" data-lbl="Kitchen Remodel">
+        <img src="assets/kitchen-remodel-white-cabinets-island.jpeg" alt="Kitchen Remodel" loading="lazy">
         <span class="gal-lbl">Kitchen Remodel</span>
+        <span class="gal-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
       </div>
-      <div class="gal-item reveal d2">
-        <img src="assets/bathroom-shower-glass-enclosure-renovation.jpeg" alt="Bathroom Renovation">
+      <div class="gal-item reveal d2" data-src="assets/bathroom-shower-glass-enclosure-renovation.jpeg" data-lbl="Bathroom Renovation">
+        <img src="assets/bathroom-shower-glass-enclosure-renovation.jpeg" alt="Bathroom Renovation" loading="lazy">
         <span class="gal-lbl">Bathroom Renovation</span>
+        <span class="gal-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
       </div>
-      <!-- Row 2 -->
-      <div class="gal-item reveal d1">
-        <img src="assets/flooring-hardwood-deck-wooden-ceiling.jpeg" alt="Hardwood Flooring">
+      <div class="gal-item reveal d1" data-src="assets/flooring-hardwood-deck-wooden-ceiling.jpeg" data-lbl="Hardwood Flooring">
+        <img src="assets/flooring-hardwood-deck-wooden-ceiling.jpeg" alt="Hardwood Flooring" loading="lazy">
         <span class="gal-lbl">Hardwood Flooring</span>
+        <span class="gal-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
       </div>
-      <div class="gal-item reveal d2">
-        <img src="assets/kitchen-island-black-countertop-pendant.jpeg" alt="Kitchen Island">
+      <div class="gal-item reveal d2" data-src="assets/kitchen-island-black-countertop-pendant.jpeg" data-lbl="Kitchen Island">
+        <img src="assets/kitchen-island-black-countertop-pendant.jpeg" alt="Kitchen Island" loading="lazy">
         <span class="gal-lbl">Kitchen Island</span>
+        <span class="gal-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
       </div>
-      <div class="gal-item reveal d3">
-        <img src="assets/bathroom-vanity-marble-countertop-luxury.jpeg" alt="Luxury Vanity">
+      <div class="gal-item reveal d3" data-src="assets/bathroom-vanity-marble-countertop-luxury.jpeg" data-lbl="Luxury Vanity">
+        <img src="assets/bathroom-vanity-marble-countertop-luxury.jpeg" alt="Luxury Vanity" loading="lazy">
         <span class="gal-lbl">Luxury Vanity</span>
+        <span class="gal-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
       </div>
-      <!-- Row 3 -->
-      <div class="gal-item reveal d1">
-        <img src="assets/living-room-fireplace-modern-accent-wall.jpeg" alt="Living Room">
+      <div class="gal-item reveal d1" data-src="assets/living-room-fireplace-modern-accent-wall.jpeg" data-lbl="Living Room">
+        <img src="assets/living-room-fireplace-modern-accent-wall.jpeg" alt="Living Room" loading="lazy">
         <span class="gal-lbl">Living Room</span>
+        <span class="gal-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
       </div>
-      <div class="gal-item reveal d2">
-        <img src="assets/bathroom-shower-tile-marble-walk-in.jpeg" alt="Walk-In Shower">
+      <div class="gal-item reveal d2" data-src="assets/bathroom-shower-tile-marble-walk-in.jpeg" data-lbl="Walk-In Shower">
+        <img src="assets/bathroom-shower-tile-marble-walk-in.jpeg" alt="Walk-In Shower" loading="lazy">
         <span class="gal-lbl">Walk-In Shower</span>
+        <span class="gal-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
       </div>
-      <div class="gal-item reveal d3">
-        <img src="assets/interior-accent-wall-wood-siding-modern.jpeg" alt="Accent Wall">
+      <div class="gal-item reveal d3" data-src="assets/interior-accent-wall-wood-siding-modern.jpeg" data-lbl="Interior Accent Wall">
+        <img src="assets/interior-accent-wall-wood-siding-modern.jpeg" alt="Accent Wall" loading="lazy">
         <span class="gal-lbl">Interior Accent Wall</span>
+        <span class="gal-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
       </div>
-      <!-- Panoramic closer -->
-      <div class="gal-item full-w reveal d1">
-        <img src="assets/exterior-home-white-modern-facade-driveway.jpeg" alt="Exterior Renovation">
+      <div class="gal-item full-w reveal d1" data-src="assets/exterior-home-white-modern-facade-driveway.jpeg" data-lbl="Exterior Renovation">
+        <img src="assets/exterior-home-white-modern-facade-driveway.jpeg" alt="Exterior Renovation" loading="lazy">
         <span class="gal-lbl">Exterior Renovation</span>
+        <span class="gal-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
       </div>
     </div>
   </div>
@@ -737,24 +929,61 @@
     </div>
     <!-- Static fallback reviews — replaced by GMB when API key + Place ID are configured -->
     <div class="rev-grid" id="revGrid">
+
       <div class="rev-card reveal d1">
-        <div class="rev-stars">★★★★★</div>
-        <p class="rev-text">"Nagy completely transformed our kitchen. The attention to detail was incredible — every cabinet, every countertop edge, exactly as we envisioned. I had 3 other contractors bid, but the moment I met the team I knew they were different."</p>
-        <div class="rev-author">Sarah M.</div>
-        <div class="rev-loc">Ponte Vedra Beach, FL</div>
+        <div class="rev-header-row">
+          <div class="rev-user">
+            <div class="rev-avatar" style="background:#4285F4;">SM</div>
+            <div class="rev-user-info">
+              <div class="rev-author">Sarah M.</div>
+              <div class="rev-loc">Ponte Vedra Beach, FL</div>
+            </div>
+          </div>
+          <svg class="rev-g-logo" width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="rev-stars-row">
+          <span class="rev-stars">★★★★★</span>
+          <span class="rev-date">2 months ago</span>
+        </div>
+        <p class="rev-text">Nagy completely transformed our kitchen. The attention to detail was incredible — every cabinet, every countertop edge, exactly as we envisioned. I had 3 other contractors bid, but the moment I met the team I knew they were different.</p>
       </div>
+
       <div class="rev-card reveal d2">
-        <div class="rev-stars">★★★★★</div>
-        <p class="rev-text">"Our master bathroom is absolutely stunning. The tile work is beautiful, the shower turned out better than the design we picked. Professional, clean, on time. Already recommended to three neighbors."</p>
-        <div class="rev-author">Michael &amp; Dana T.</div>
-        <div class="rev-loc">St. Johns, FL</div>
+        <div class="rev-header-row">
+          <div class="rev-user">
+            <div class="rev-avatar" style="background:#34A853;">MD</div>
+            <div class="rev-user-info">
+              <div class="rev-author">Michael &amp; Dana T.</div>
+              <div class="rev-loc">St. Johns, FL</div>
+            </div>
+          </div>
+          <svg class="rev-g-logo" width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="rev-stars-row">
+          <span class="rev-stars">★★★★★</span>
+          <span class="rev-date">3 months ago</span>
+        </div>
+        <p class="rev-text">Our master bathroom is absolutely stunning. The tile work is beautiful, the shower turned out better than the design we picked. Professional, clean, on time. Already recommended to three neighbors.</p>
       </div>
+
       <div class="rev-card reveal d3">
-        <div class="rev-stars">★★★★★</div>
-        <p class="rev-text">"We hired Nagy for a full home renovation — kitchen, two bathrooms, and all the flooring. The team was efficient, incredibly clean, and communicated every step of the process. Best decision we made."</p>
-        <div class="rev-author">Jennifer R.</div>
-        <div class="rev-loc">Nocatee, FL</div>
+        <div class="rev-header-row">
+          <div class="rev-user">
+            <div class="rev-avatar" style="background:#EA4335;">JR</div>
+            <div class="rev-user-info">
+              <div class="rev-author">Jennifer R.</div>
+              <div class="rev-loc">Nocatee, FL</div>
+            </div>
+          </div>
+          <svg class="rev-g-logo" width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="rev-stars-row">
+          <span class="rev-stars">★★★★★</span>
+          <span class="rev-date">1 month ago</span>
+        </div>
+        <p class="rev-text">We hired Nagy for a full home renovation — kitchen, two bathrooms, and all the flooring. The team was efficient, incredibly clean, and communicated every step of the process. Best decision we made.</p>
       </div>
+
     </div>
   </div>
 </section>
@@ -762,12 +991,11 @@
 <!-- ═══════════ CONTACT ═══════════ -->
 <section id="contact">
   <div class="container">
-    <div class="sec-label reveal">Free Estimate</div>
-    <h2 class="sec-title reveal d1">Get a Quote</h2>
     <div class="contact-grid">
       <div class="reveal d1">
-        <h3 class="contact-h">Ready to start<br>your project?</h3>
-        <p style="font-size:.875rem;color:var(--ink-m);line-height:1.8;margin-bottom:1.75rem;">Fill out the form and we'll get back to you within 24 hours with a free, no-obligation estimate.</p>
+        <div class="sec-label">Free Estimate</div>
+        <h2 class="sec-title">Get a Quote</h2>
+        <p class="contact-sub">Fill out the form and we'll get back to you within 24 hours with a free, no-obligation estimate.</p>
         <div class="contact-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.36 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.07 6.07l1.41-1.41a2 2 0 012.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
           <a href="tel:+19045771257">(904) 577-1257</a>
@@ -798,14 +1026,27 @@
             <option value="Kitchen Remodeling">Kitchen Remodeling</option>
             <option value="Bathroom Remodeling">Bathroom Remodeling</option>
             <option value="Flooring">Flooring</option>
+            <option value="Tile Work">Tile Work</option>
+            <option value="Trim & Finish">Trim &amp; Finish</option>
+            <option value="Interior Painting">Interior Painting</option>
+            <option value="Drywall">Drywall</option>
+            <option value="Demolition">Demolition</option>
+            <option value="Decking">Decking</option>
             <option value="Whole Home Renovation">Whole Home Renovation</option>
             <option value="Other">Other / Not sure yet</option>
           </select>
         </div>
         <div class="fg"><label for="fmsg">Tell Us About Your Project</label><textarea id="fmsg" name="message" placeholder="Describe your project, timeline, or any questions you have..."></textarea></div>
-        <button type="submit" class="btn-wa">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.102 1.522 5.83L.057 23.855a.5.5 0 00.607.607l6.025-1.465A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.659-.516-5.178-1.415l-.372-.221-3.85.937.957-3.849-.236-.385A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          Send via WhatsApp
+        <button type="submit" class="btn-wa" id="btnSubmit" data-state="idle">
+          <span class="btn-label-idle" aria-hidden="false">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.102 1.522 5.83L.057 23.855a.5.5 0 00.607.607l6.025-1.465A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.659-.516-5.178-1.415l-.372-.221-3.85.937.957-3.849-.236-.385A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Get My Free Estimate
+          </span>
+          <span class="btn-label-sending" aria-hidden="true">Sending…</span>
+          <span class="btn-label-done" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg>
+            Message Sent!
+          </span>
         </button>
       </form>
     </div>
@@ -818,15 +1059,7 @@
     <div class="footer-grid">
       <div>
         <a href="#" class="footer-logo">
-          <svg width="34" height="28" viewBox="0 0 60 50" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="4,27 30,7 56,27"/>
-            <line x1="11" y1="23" x2="11" y2="46"/>
-            <line x1="49" y1="23" x2="49" y2="46"/>
-          </svg>
-          <div class="logo-text">
-            <span class="logo-name">NAGY</span>
-            <span class="logo-sub">Custom Remodeling</span>
-          </div>
+          <img src="assets/logo-original-branco.png" alt="Nagy Custom Remodeling">
         </a>
         <p class="footer-tagline">Premium kitchen, bathroom &amp; flooring remodeling in Jacksonville, FL. Licensed, insured, and bilingual.</p>
       </div>
@@ -834,7 +1067,9 @@
         <p class="footer-col-h">Services</p>
         <a href="#services" class="footer-link">Kitchen Remodeling</a>
         <a href="#services" class="footer-link">Bathroom Remodeling</a>
-        <a href="#services" class="footer-link">Flooring</a>
+        <a href="#services" class="footer-link">Flooring &amp; Tile</a>
+        <a href="#services" class="footer-link">Painting &amp; Drywall</a>
+        <a href="#services" class="footer-link">Trim, Decking &amp; More</a>
         <a href="#services" class="footer-link">Whole Home Renovation</a>
       </div>
       <div>
@@ -847,10 +1082,24 @@
     </div>
     <div class="footer-bottom">
       <p class="footer-copy">© <span id="footerYear">2025</span> Nagy Custom Remodeling · Jacksonville, FL · Licensed &amp; Insured</p>
-      <p class="footer-copy">Designed in Jacksonville</p>
+      <p class="footer-copy"><a href="#" style="color:inherit;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#F0F0F0'" onmouseout="this.style.color=''">Privacy Policy &amp; Cookies</a></p>
     </div>
   </div>
 </footer>
+
+<!-- ═══════════ LIGHTBOX ═══════════ -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close">&#x2715;</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous photo">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"/></svg>
+  </button>
+  <img class="lb-img" id="lbImg" src="" alt="">
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next photo">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,18 15,12 9,6"/></svg>
+  </button>
+  <span class="lb-caption" id="lbCaption"></span>
+  <span class="lb-counter" id="lbCounter"></span>
+</div>
 
 <!-- ═══════════ WA FLOAT ═══════════ -->
 <a href="https://wa.me/19045771257?text=Hi%2C%20I%27d%20like%20a%20free%20quote!" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
@@ -875,6 +1124,47 @@
     document.querySelectorAll('.hero-anim').forEach(el => el.classList.add('loaded'));
     document.querySelectorAll('.hero-anim-right').forEach(el => el.classList.add('loaded'));
     setTimeout(() => document.getElementById('heroBadge').classList.add('loaded'), 700);
+
+    // ── Lightbox ──
+    (function() {
+      const items = Array.from(document.querySelectorAll('.gal-item[data-src]'));
+      const lb      = document.getElementById('lb');
+      const lbImg   = document.getElementById('lbImg');
+      const lbCap   = document.getElementById('lbCaption');
+      const lbCount = document.getElementById('lbCounter');
+      let current = 0;
+
+      function open(index) {
+        current = index;
+        const item = items[current];
+        lbImg.src = item.dataset.src;
+        lbImg.alt = item.dataset.lbl || '';
+        lbCap.textContent = item.dataset.lbl || '';
+        lbCount.textContent = (current + 1) + ' / ' + items.length;
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      function prev() { open((current - 1 + items.length) % items.length); }
+      function next() { open((current + 1) % items.length); }
+
+      items.forEach(function(item, i) {
+        item.addEventListener('click', function() { open(i); });
+      });
+      document.getElementById('lbClose').addEventListener('click', close);
+      document.getElementById('lbPrev').addEventListener('click', prev);
+      document.getElementById('lbNext').addEventListener('click', next);
+      lb.addEventListener('click', function(e) { if (e.target === lb) close(); });
+      document.addEventListener('keydown', function(e) {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape')     close();
+        if (e.key === 'ArrowLeft')  prev();
+        if (e.key === 'ArrowRight') next();
+      });
+    })();
 
     // Dynamic copyright year
     const fy = document.getElementById('footerYear');
@@ -1063,10 +1353,22 @@
       alert('Please fill in your name, phone number, and service type.');
       return;
     }
-    let text = `Hi Nagy Custom Remodeling!\n\nMy name is ${name}.\nI'm interested in: ${service}.\nPhone: ${phone}`;
-    if (email) text += `\nEmail: ${email}`;
-    if (msg)   text += `\n\nMessage: ${msg}`;
-    window.open(`https://wa.me/19045771257?text=${encodeURIComponent(text)}`, '_blank');
+    const btn = document.getElementById('btnSubmit');
+    btn.disabled = true;
+    btn.dataset.state = 'sending';
+
+    let text = 'Hi Nagy Custom Remodeling!\n\nMy name is ' + name + '.\nI\'m interested in: ' + service + '.\nPhone: ' + phone;
+    if (email) text += '\nEmail: ' + email;
+    if (msg)   text += '\n\nMessage: ' + msg;
+
+    setTimeout(function() {
+      window.open('https://wa.me/19045771257?text=' + encodeURIComponent(text), '_blank');
+      btn.dataset.state = 'done';
+      setTimeout(function() {
+        btn.dataset.state = 'idle';
+        btn.disabled = false;
+      }, 3000);
+    }, 600);
   });
 </script>
 </body>
