@@ -39,7 +39,6 @@
       --bg: #0f0f0f;
       --text: #f0ede8;
       --muted: #777;
-      --nav-h: 82px;
     }
 
     body {
@@ -53,100 +52,8 @@
       justify-content: center;
       text-align: center;
       padding: 2rem;
-      padding-top: calc(var(--nav-h) + 2rem);
       padding-bottom: 25vh;
     }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; inset: 0 0 auto 0;
-      background: rgba(15,15,15,.97);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,.07);
-      border-top: 2.5px solid var(--accent);
-      z-index: 100;
-      transition: box-shadow .3s, background .3s;
-    }
-    nav.scrolled {
-      background: rgba(10,10,10,.99);
-      box-shadow: 0 2px 30px rgba(0,0,0,.5);
-    }
-    .nav-inner {
-      max-width: 1400px; margin: 0 auto;
-      padding-top: 8px; padding-bottom: 8px; padding-left: 2rem; padding-right: 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      transition: padding-top .4s cubic-bezier(.22,.68,0,1), padding-bottom .4s cubic-bezier(.22,.68,0,1);
-    }
-    nav.scrolled .nav-inner { padding-top: 4px; padding-bottom: 4px; }
-    .nav-logo { display: flex; align-items: center; text-decoration: none; }
-    .nav-logo img { height: 66px; width: auto; transition: height .4s cubic-bezier(.22,.68,0,1); }
-    nav.scrolled .nav-logo img { height: 44px; }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      color: rgba(240,237,232,.45); text-decoration: none;
-      font-size: .82rem; font-weight: 400; letter-spacing: .04em;
-      position: relative; padding-bottom: 3px;
-      transition: color .2s;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 1.5px; background: var(--accent);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform .25s ease;
-    }
-    .nav-links a:hover { color: var(--text); }
-    .nav-links a:hover::after { transform: scaleX(1); }
-    .nav-right { display: flex; align-items: center; gap: 1.25rem; }
-    .nav-phone {
-      color: rgba(240,237,232,.4); text-decoration: none;
-      font-size: .82rem; letter-spacing: .04em;
-      display: flex; align-items: center; gap: .45rem;
-      transition: color .2s;
-    }
-    .nav-phone:hover { color: var(--text); }
-    .nav-phone svg { opacity: .5; transition: opacity .2s; }
-    .nav-phone:hover svg { opacity: .8; }
-    .btn-nav {
-      background: var(--accent); color: #fff;
-      padding: .6rem 1.4rem; font-family: 'DM Sans', sans-serif;
-      font-size: .72rem; font-weight: 600;
-      letter-spacing: .12em; text-transform: uppercase; text-decoration: none;
-      border-radius: 2px;
-      transition: opacity .2s, transform .25s cubic-bezier(.22,.68,0,1.4);
-    }
-    .btn-nav:hover { opacity: .9; transform: translateY(-1px); }
-
-    /* hamburger */
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer; padding: 4px;
-    }
-    .hamburger span {
-      display: block; width: 22px; height: 1.5px;
-      background: rgba(240,237,232,.6);
-      transition: transform .3s, opacity .3s;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-    .mob-menu {
-      display: none; position: fixed; top: var(--nav-h); inset-inline: 0;
-      background: #111; border-bottom: 1px solid rgba(255,255,255,.07);
-      padding: 1.5rem 2rem; flex-direction: column; gap: .25rem; z-index: 99;
-      transition: top .4s cubic-bezier(.22,.68,0,1);
-    }
-    nav.scrolled ~ .mob-menu { top: 62px; }
-    .mob-menu.open { display: flex; }
-    .mob-menu a {
-      color: rgba(240,237,232,.5); text-decoration: none;
-      font-size: .9rem; padding: .6rem 0;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-      transition: color .2s;
-    }
-    .mob-menu a:last-child { border-bottom: none; }
-    .mob-menu a:hover { color: var(--text); }
-    .mob-wa { color: #25d366 !important; font-weight: 600; }
 
     /* ── Badge ── */
     .badge {
@@ -239,10 +146,6 @@
     }
 
     /* ── Responsive ── */
-    @media (max-width: 768px) {
-      .nav-links, .nav-phone { display: none; }
-      .hamburger { display: flex; }
-    }
   </style>
 </head>
 <body>
@@ -250,40 +153,6 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T8LSBB48"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-
-<!-- ═══════════ NAV ═══════════ -->
-<nav id="mainNav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">
-      <img src="assets/logo-original-branco.webp" alt="Nagy Custom Remodeling" width="210" height="180">
-    </a>
-    <ul class="nav-links">
-      <li><a href="/about/">About</a></li>
-      <li><a href="/services/">Services</a></li>
-      <li><a href="/portfolio/">Portfolio</a></li>
-      <li><a href="/contact/">Contact</a></li>
-    </ul>
-    <div class="nav-right">
-      <a href="tel:+19045771257" class="nav-phone">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.07 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.44 2.58.94 2.81.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.97.39 2.23.89 2.81.7A2 2 0 0122 14.92z"/></svg>
-        (904) 577-1257
-      </a>
-      <a href="/contact/" class="btn-nav">Free Quote</a>
-      <button class="hamburger" id="hamburger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</nav>
-
-<nav class="mob-menu" id="mobMenu">
-  <a href="/about/">About</a>
-  <a href="/services/">Services</a>
-  <a href="/portfolio/">Portfolio</a>
-  <a href="/contact/">Get a Free Quote</a>
-  <a href="tel:+19045771257">(904) 577-1257</a>
-  <a href="https://wa.me/19045771257" target="_blank" rel="noopener noreferrer" class="mob-wa">WhatsApp</a>
-</nav>
 
 <!-- ═══════════ CONTENT ═══════════ -->
   <div class="badge">Coming Soon</div>
@@ -313,17 +182,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <p class="footer">Nagy Custom Remodeling &mdash; Jacksonville, FL &mdash; Licensed &amp; Insured</p>
 
-<script>
-  const ham = document.getElementById('hamburger');
-  const mob = document.getElementById('mobMenu');
-  ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); });
-
-  window.addEventListener('scroll', () => {
-    document.getElementById('mainNav').classList.toggle('scrolled', window.pageYOffset > 5);
-  }, { passive: true });
-
-
-</script>
 <script src="assets/consent.js" defer></script>
 </body>
 </html>
