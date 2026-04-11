@@ -1255,10 +1255,11 @@
       <div class="form-card reveal from-right d2">
       <form class="form" id="quoteForm" novalidate>
         <div class="form-row">
-          <div class="fg"><label for="fname">Full Name *</label><input type="text" id="fname" name="name" placeholder="John Smith" required></div>
-          <div class="fg"><label for="fphone">Phone *</label><input type="tel" id="fphone" name="phone" placeholder="(904) 000-0000" required></div>
+          <div class="fg"><label for="fname">First Name *</label><input type="text" id="fname" name="fname" placeholder="John" required autocomplete="given-name"></div>
+          <div class="fg"><label for="flname">Last Name *</label><input type="text" id="flname" name="lname" placeholder="Smith" required autocomplete="family-name"></div>
         </div>
-        <div class="fg"><label for="femail">Email</label><input type="email" id="femail" name="email" placeholder="john@email.com"></div>
+        <div class="fg"><label for="fphone">Phone *</label><input type="tel" id="fphone" name="phone" placeholder="(904) 000-0000" required autocomplete="tel"></div>
+        <div class="fg"><label for="femail">Email</label><input type="email" id="femail" name="email" placeholder="john@email.com" autocomplete="email"></div>
         <div class="fg">
           <label for="fservice">Service Needed *</label>
           <select id="fservice" name="service" required>
@@ -1606,12 +1607,13 @@
   // ── WhatsApp form ──
   document.getElementById('quoteForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const name    = document.getElementById('fname').value.trim();
+    const fname   = document.getElementById('fname').value.trim();
+    const lname   = document.getElementById('flname').value.trim();
     const phone   = document.getElementById('fphone').value.trim();
     const email   = document.getElementById('femail').value.trim();
     const service = document.getElementById('fservice').value;
     const msg     = document.getElementById('fmsg').value.trim();
-    if (!name || !phone || !service) {
+    if (!fname || !lname || !phone || !service) {
       alert('Please fill in your name, phone number, and service type.');
       return;
     }
@@ -1619,7 +1621,7 @@
     btn.disabled = true;
     btn.dataset.state = 'sending';
 
-    let text = 'Hi Nagy Custom Remodeling!\n\nMy name is ' + name + '.\nI\'m interested in: ' + service + '.\nPhone: ' + phone;
+    let text = 'Hi Nagy Custom Remodeling!\n\nMy name is ' + fname + ' ' + lname + '.\nI\'m interested in: ' + service + '.\nPhone: ' + phone;
     if (email) text += '\nEmail: ' + email;
     if (msg)   text += '\n\nDetails: ' + msg;
 
