@@ -516,11 +516,12 @@
     .rev-card.gmb-loaded:nth-child(6) { animation-delay: .40s; }
 
     /* ── CONTACT ── */
-    #contact { background: var(--bg); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1.55fr; gap: 5rem; align-items: start; }
+    #contact { background: var(--bg2); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: 4rem; align-items: start; }
     #contact .sec-label { margin-bottom: .75rem; }
     #contact .sec-title { margin-bottom: 1rem; }
     .contact-sub { font-size: .875rem; color: var(--ink-m); line-height: 1.8; margin-bottom: 1.75rem; }
+    .form-card { background: var(--white); border: 1px solid var(--border); padding: 2rem 2.5rem; }
     .contact-item {
       display: flex; align-items: flex-start; gap: .875rem;
       padding: .875rem 0; border-bottom: 1px solid var(--border);
@@ -1013,7 +1014,8 @@
           <span>Mon–Fri 8am–6pm &nbsp;|&nbsp; Sat 8am–1pm</span>
         </div>
       </div>
-      <form class="form reveal d2" id="quoteForm" novalidate>
+      <div class="form-card reveal d2">
+      <form class="form" id="quoteForm" novalidate>
         <div class="form-row">
           <div class="fg"><label for="fname">Full Name *</label><input type="text" id="fname" name="name" placeholder="John Smith" required></div>
           <div class="fg"><label for="fphone">Phone *</label><input type="tel" id="fphone" name="phone" placeholder="(904) 000-0000" required></div>
@@ -1049,6 +1051,7 @@
           </span>
         </button>
       </form>
+      </div>
     </div>
   </div>
 </section>
