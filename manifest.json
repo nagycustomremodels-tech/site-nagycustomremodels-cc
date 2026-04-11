@@ -1,0 +1,24 @@
+{
+  "name": "Nagy Custom Remodeling",
+  "short_name": "Nagy Remodeling",
+  "description": "Licensed & insured remodeling contractor in Jacksonville, FL. Kitchen, bathroom, flooring & whole-home renovations.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#B5572E",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
