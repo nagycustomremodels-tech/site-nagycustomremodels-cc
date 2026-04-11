@@ -204,6 +204,13 @@
       transition: opacity .2s, transform .25s cubic-bezier(.22,.68,0,1.4), box-shadow .2s;
     }
     .btn-primary:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(208,85,28,.3); }
+    .btn-outline {
+      display: inline-block; border: 1.5px solid var(--accent); color: var(--accent);
+      padding: .75rem 2rem; font-family: var(--font); font-size: .72rem; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase; text-decoration: none; border-radius: 2px;
+      transition: background .2s, color .2s;
+    }
+    .btn-outline:hover { background: var(--accent); color: #fff; }
     .hero-link {
       color: var(--ink-m); font-size: .78rem; letter-spacing: .06em; text-decoration: none;
       display: flex; align-items: center; gap: .4rem; transition: color .2s;
@@ -338,6 +345,7 @@
       font-size: .72rem; font-weight: 500; letter-spacing: .04em;
       color: var(--ink-d); border: 1px solid var(--border);
       padding: .35rem .9rem; background: var(--bg);
+      text-decoration: none; display: inline-block;
       transition: border-color .2s, color .2s;
     }
     .svc-chip:hover { border-color: var(--accent); color: var(--accent); }
@@ -861,8 +869,8 @@
     </h1>
     <p class="hero-sub hero-anim" style="transition-delay:.45s">Kitchen, bathroom, flooring, tile, drywall &amp; more — delivered on time, on budget, with a clean site every single day.</p>
     <div class="hero-cta-row hero-anim" style="transition-delay:.55s">
-      <a href="#contact" class="btn-primary">Get Free Quote</a>
-      <a href="#gallery" class="hero-link">
+      <a href="contact.html" class="btn-primary">Get Free Quote</a>
+      <a href="portfolio.html" class="hero-link">
         See Our Work
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
       </a>
@@ -963,13 +971,16 @@
     <div class="svc-also reveal">
       <span class="svc-also-label">Also Offering</span>
       <div class="svc-chips">
-        <span class="svc-chip">Tile Work</span>
-        <span class="svc-chip">Trim &amp; Finish</span>
-        <span class="svc-chip">Interior Painting</span>
-        <span class="svc-chip">Drywall</span>
-        <span class="svc-chip">Demolition</span>
-        <span class="svc-chip">Decking</span>
+        <a href="services.html" class="svc-chip">Tile Work</a>
+        <a href="services.html" class="svc-chip">Trim &amp; Finish</a>
+        <a href="services.html" class="svc-chip">Interior Painting</a>
+        <a href="services.html" class="svc-chip">Drywall</a>
+        <a href="services.html" class="svc-chip">Demolition</a>
+        <a href="services.html" class="svc-chip">Decking</a>
       </div>
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;" class="reveal">
+      <a href="services.html" class="btn-outline">View All Services &rarr;</a>
     </div>
   </div>
 </section>
@@ -1098,21 +1109,9 @@
         <span class="gal-lbl">Living Room</span>
         <span class="gal-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
       </div>
-      <div class="gal-item reveal d2" data-src="assets/bathroom-shower-tile-marble-walk-in.jpeg" data-lbl="Walk-In Shower">
-        <img src="assets/bathroom-shower-tile-marble-walk-in.jpeg" alt="Walk-In Shower" loading="lazy">
-        <span class="gal-lbl">Walk-In Shower</span>
-        <span class="gal-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
-      </div>
-      <div class="gal-item reveal d3" data-src="assets/interior-accent-wall-wood-siding-modern.jpeg" data-lbl="Interior Accent Wall">
-        <img src="assets/interior-accent-wall-wood-siding-modern.jpeg" alt="Accent Wall" loading="lazy">
-        <span class="gal-lbl">Interior Accent Wall</span>
-        <span class="gal-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
-      </div>
-      <div class="gal-item full-w reveal d1" data-src="assets/exterior-home-white-modern-facade-driveway.jpeg" data-lbl="Exterior Renovation">
-        <img src="assets/exterior-home-white-modern-facade-driveway.jpeg" alt="Exterior Renovation" loading="lazy">
-        <span class="gal-lbl">Exterior Renovation</span>
-        <span class="gal-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
-      </div>
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;" class="reveal">
+      <a href="portfolio.html" class="btn-outline">View Full Portfolio &rarr;</a>
     </div>
   </div>
 </section>
@@ -1125,7 +1124,7 @@
         <p class="cta-mid-label">Jacksonville's #1 Rated Remodeler</p>
         <h2 class="cta-mid-title">Ready to transform your home?</h2>
       </div>
-      <a href="#contact" class="btn-primary cta-mid-btn reveal d2">Get Free Estimate</a>
+      <a href="contact.html" class="btn-primary cta-mid-btn reveal d2">Get Free Estimate</a>
     </div>
   </div>
 </section>
