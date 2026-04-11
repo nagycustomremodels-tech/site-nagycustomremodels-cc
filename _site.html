@@ -530,9 +530,13 @@
       font-size: .875rem; color: var(--ink-m);
       transition: color .2s;
     }
-    .contact-item:hover { color: var(--ink); }
-    .contact-item svg { flex-shrink: 0; opacity: .4; margin-top: 1px; }
+    .contact-item { transition: color .2s, padding-left .25s cubic-bezier(.22,.68,0,1.4); }
+    .contact-item:hover { color: var(--ink); padding-left: .25rem; }
+    .contact-item svg { flex-shrink: 0; opacity: .4; margin-top: 1px; transition: color .2s, opacity .2s, transform .25s cubic-bezier(.22,.68,0,1.4); }
+    .contact-item:hover svg { color: var(--accent); opacity: 1; transform: scale(1.18); }
     .contact-item a { color: inherit; text-decoration: none; }
+    .form-card { transition: box-shadow .35s ease; }
+    .form-card:focus-within { box-shadow: 0 12px 48px rgba(208,85,28,.08); }
     .form { display: flex; flex-direction: column; gap: 1rem; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .fg { display: flex; flex-direction: column; gap: .375rem; }
@@ -1000,28 +1004,28 @@
 <section id="contact">
   <div class="container">
     <div class="contact-grid">
-      <div class="reveal d1">
-        <div class="sec-label">Free Estimate</div>
-        <h2 class="sec-title">Get a Quote</h2>
-        <p class="contact-sub">Fill out the form and we'll get back to you within 24 hours with a free, no-obligation estimate.</p>
-        <div class="contact-item">
+      <div>
+        <div class="sec-label reveal from-left d1">Free Estimate</div>
+        <h2 class="sec-title reveal d2">Get a Quote</h2>
+        <p class="contact-sub reveal d3">Fill out the form and we'll get back to you within 24 hours with a free, no-obligation estimate.</p>
+        <div class="contact-item reveal d3">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.36 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.07 6.07l1.41-1.41a2 2 0 012.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
           <a href="tel:+19045771257">(904) 577-1257</a>
         </div>
-        <div class="contact-item">
+        <div class="contact-item reveal d4">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <span>Jacksonville, FL &amp; surrounding areas</span>
         </div>
-        <div class="contact-item">
+        <div class="contact-item reveal d5">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           <a href="https://instagram.com/nagycustomremodels" target="_blank" rel="noopener">@nagycustomremodels</a>
         </div>
-        <div class="contact-item" style="border-bottom:none;">
+        <div class="contact-item reveal d6" style="border-bottom:none;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
           <span>Mon–Fri 8am–6pm &nbsp;|&nbsp; Sat 8am–1pm</span>
         </div>
       </div>
-      <div class="form-card reveal d2">
+      <div class="form-card reveal from-right d2">
       <form class="form" id="quoteForm" novalidate>
         <div class="form-row">
           <div class="fg"><label for="fname">Full Name *</label><input type="text" id="fname" name="name" placeholder="John Smith" required></div>
