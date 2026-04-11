@@ -192,6 +192,11 @@
     .hero-link:hover { color: var(--ink); }
     .hero-link svg { transition: transform .25s ease; }
     .hero-link:hover svg { transform: translateX(4px); }
+    .hero-urgency {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .72rem; color: var(--ink-m); margin-top: .875rem;
+    }
+    .hero-urgency svg { color: var(--accent); flex-shrink: 0; }
     /* ── PROOF BAR ── */
     .proof-bar {
       grid-column: 1 / -1; grid-row: 2;
@@ -645,37 +650,59 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
-      #hero { grid-template-columns: 1fr; height: auto; }
-      .hero-right { height: 55vw; min-height: 320px; }
-      .hero-left { padding: 3rem 2rem; }
-      .hero-left  { grid-column: 1; grid-row: 1; }
-      .hero-right { grid-column: 1 / -1; grid-row: 2; height: 55vw; min-height: 320px; }
-      .proof-bar  { grid-column: 1 / -1; grid-row: 3; }
-      #hero { grid-template-rows: auto auto auto; height: auto; }
-      .proof-inner { flex-wrap: wrap; gap: 1.5rem 0; }
-      .proof-stat { flex: 1 1 45%; padding: .75rem 1rem; }
+      /* Hero */
+      #hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        height: auto;
+      }
+      .hero-left  { grid-column: 1; grid-row: 1; padding: 3rem 2rem 2.5rem; }
+      .hero-right { grid-column: 1; grid-row: 2; height: 56vw; min-height: 300px; }
+      .proof-bar  { grid-column: 1; grid-row: 3; }
+      .hero-badge { bottom: 1.5rem; }
+      /* Proof bar */
+      .proof-inner { flex-wrap: wrap; gap: 1.25rem 0; }
+      .proof-stat  { flex: 1 1 45%; padding: .75rem 1rem; }
       .proof-divider { display: none; }
+      /* Layout */
       .why-grid { grid-template-columns: 1fr 1fr; }
       .rev-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
-      .nav-links, .nav-phone { display: none; }
+      /* Nav */
+      .nav-links, .nav-phone, .nav-ig { display: none; }
       .hamburger { display: flex; }
-      .hero-badge { padding: .6rem 1rem; bottom: 5.5rem; left: 1rem; }
-      .hero-badge-num { font-size: 1.25rem; }
+      /* Section spacing */
+      section { padding: 3.5rem 0; }
+      /* Hero */
+      .hero-left { padding: 2.5rem 1.5rem 2rem; }
+      .hero-right { height: 62vw; min-height: 260px; }
+      .hero-urgency { display: none; }
+      /* Badge */
+      .hero-badge { padding: .6rem 1rem; bottom: 1.25rem; left: 1rem; }
+      .hero-badge-num { font-size: 1.2rem; }
       .hero-badge-lbl { font-size: .5rem; }
       .hero-badge-stars { font-size: .6rem; }
+      /* Services */
       .svc-grid { grid-template-columns: 1fr; }
+      .svc-also { gap: .6rem; padding: 1.25rem 1.5rem; }
+      /* Why */
       .why-grid { grid-template-columns: 1fr; }
+      /* Gallery */
       .gal-grid { grid-template-columns: 1fr 1fr; }
       .gal-item:first-child { grid-column: span 2; }
       .gal-item.full-w { aspect-ratio: 16/9; }
+      /* Form */
       .form-row { grid-template-columns: 1fr; }
+      .form-card { padding: 1.5rem; }
+      /* Before/After */
+      .ba-lead { grid-template-columns: 1fr; gap: 1rem; }
+      /* Footer */
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; text-align: center; gap: .5rem; }
-      .ba-lead { grid-template-columns: 1fr; gap: 1rem; }
+      .footer-logo img { height: 70px; }
     }
   </style>
 </head>
@@ -731,6 +758,10 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
       </a>
     </div>
+    <p class="hero-urgency hero-anim" style="transition-delay:.62s">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg>
+      Now booking — free estimates within 24h
+    </p>
   </div>
   <div class="hero-right hero-anim-right">
     <img src="assets/kitchen-remodel-white-cabinets-island.jpeg" alt="Kitchen remodel by Nagy Custom Remodeling" id="heroImg" fetchpriority="high">
