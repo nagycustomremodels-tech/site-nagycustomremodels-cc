@@ -188,23 +188,23 @@
     .hero-link:hover { color: var(--ink); }
     .hero-link svg { transition: transform .25s ease; }
     .hero-link:hover svg { transform: translateX(4px); }
-    .hero-stats {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--border); padding-top: 2rem;
+    /* ── PROOF BAR ── */
+    .proof-bar { background: var(--ink); padding: 3.5rem 0; }
+    .proof-inner { display: flex; align-items: center; justify-content: center; }
+    .proof-stat {
+      flex: 1; display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 0 2.5rem;
     }
-    .hero-stat { padding-right: 1.5rem; border-right: 1px solid var(--border); }
-    .hero-stat:last-child { border-right: none; padding-right: 0; padding-left: 1.5rem; }
-    .hero-stat:nth-child(2) { padding-left: 1.5rem; }
-    .hero-stat-num {
-      display: block; font-size: 1.85rem; font-weight: 700; letter-spacing: -.03em;
-      line-height: 1; margin-bottom: .3rem;
+    .proof-divider { width: 1px; height: 52px; background: rgba(255,255,255,.08); flex-shrink: 0; }
+    .proof-num {
+      display: block; font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 700;
+      letter-spacing: -.04em; line-height: 1; margin-bottom: .55rem;
       background: linear-gradient(180deg, #f07c3a 0%, #a83c0e 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      filter: drop-shadow(0 0 14px rgba(208,85,28,.4));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      filter: drop-shadow(0 0 18px rgba(208,85,28,.4));
     }
-    .hero-stat-lbl { font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-m); }
+    .proof-lbl { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.38); line-height: 1.5; }
+    .proof-check { background: none; -webkit-text-fill-color: initial; filter: none; color: var(--accent); display: flex; }
     .hero-right { position: relative; overflow: hidden; }
     .hero-right img {
       width: 100%; height: 100%; object-fit: cover; display: block;
@@ -632,6 +632,9 @@
       #hero { grid-template-columns: 1fr; height: auto; }
       .hero-right { height: 55vw; min-height: 320px; }
       .hero-left { padding: 3rem 2rem; }
+      .proof-inner { flex-wrap: wrap; gap: 2rem 0; }
+      .proof-stat { flex: 1 1 45%; padding: 1rem 1.5rem; }
+      .proof-divider { display: none; }
       .why-grid { grid-template-columns: 1fr 1fr; }
       .rev-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -704,20 +707,6 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
       </a>
     </div>
-    <div class="hero-stats hero-anim" style="transition-delay:.65s">
-      <div class="hero-stat">
-        <span class="hero-stat-num" data-count="250" data-suffix="+">250+</span>
-        <span class="hero-stat-lbl">Projects Done</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num" id="heroRating">5.0★</span>
-        <span class="hero-stat-lbl">Google Rating</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num" data-count="10" data-suffix="yr">10yr</span>
-        <span class="hero-stat-lbl">Experience</span>
-      </div>
-    </div>
   </div>
   <div class="hero-right hero-anim-right">
     <img src="assets/kitchen-remodel-white-cabinets-island.jpeg" alt="Kitchen remodel by Nagy Custom Remodeling" id="heroImg" fetchpriority="high">
@@ -728,6 +717,35 @@
     </div>
   </div>
 </section>
+
+<!-- ═══════════ PROOF BAR ═══════════ -->
+<div class="proof-bar">
+  <div class="container">
+    <div class="proof-inner">
+      <div class="proof-stat reveal">
+        <span class="proof-num" data-count="250" data-suffix="+">250+</span>
+        <span class="proof-lbl">Projects Completed</span>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-stat reveal d1">
+        <span class="proof-num" id="heroRating">5.0★</span>
+        <span class="proof-lbl">Google Rating</span>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-stat reveal d2">
+        <span class="proof-num" data-count="10" data-suffix="yr">10yr</span>
+        <span class="proof-lbl">Experience</span>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-stat reveal d3">
+        <span class="proof-num proof-check">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg>
+        </span>
+        <span class="proof-lbl">Licensed &amp; Insured</span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════ SERVICES ═══════════ -->
 <section id="services">
@@ -1186,25 +1204,29 @@
     const fy = document.getElementById('footerYear');
     if (fy) fy.textContent = new Date().getFullYear();
 
-    // Animate number counters in hero stats
-    setTimeout(() => {
-      document.querySelectorAll('.hero-stat-num[data-count]').forEach(function(el) {
-        const target = parseInt(el.getAttribute('data-count'), 10);
-        const suffix = el.getAttribute('data-suffix') || '';
-        const duration = 1400;
-        const start = performance.now();
-        function tick(now) {
-          const elapsed = now - start;
-          const progress = Math.min(elapsed / duration, 1);
-          // ease-out cubic
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.round(eased * target) + suffix;
-          if (progress < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      });
-    }, 600);
   });
+
+  // ── Proof bar count-up (fires on scroll into view) ──
+  function startCountUp(el) {
+    const target = parseInt(el.getAttribute('data-count'), 10);
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 1400;
+    const start = performance.now();
+    function tick(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { startCountUp(e.target); countObserver.unobserve(e.target); }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.proof-num[data-count]').forEach(el => countObserver.observe(el));
 
   // ── Scroll reveal ──
   const revealObserver = new IntersectionObserver((entries) => {
