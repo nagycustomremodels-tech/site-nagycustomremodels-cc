@@ -654,6 +654,84 @@
       50% { transform: scale(1.15); opacity: 0; }
     }
 
+    /* ── SCROLL CUE ── */
+    .scroll-cue {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 1px solid var(--border); color: var(--ink-m);
+      text-decoration: none; margin-top: 2.5rem; align-self: flex-start;
+      animation: scroll-bounce 2.2s ease-in-out infinite;
+      transition: border-color .2s, color .2s;
+    }
+    .scroll-cue:hover { border-color: var(--accent); color: var(--accent); }
+    @keyframes scroll-bounce {
+      0%, 100% { transform: translateY(0); }
+      55% { transform: translateY(7px); }
+    }
+
+    /* ── PROCESS ── */
+    #process { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .process-grid {
+      display: grid; grid-template-columns: 1fr 56px 1fr 56px 1fr;
+      align-items: center;
+    }
+    .process-step { text-align: center; padding: 3rem 1.5rem 2.5rem; }
+    .process-num {
+      display: block; font-size: clamp(3rem, 4vw, 4.5rem); font-weight: 700;
+      letter-spacing: -.05em; line-height: 1; margin-bottom: 1.25rem;
+      background: linear-gradient(180deg, #f07c3a 0%, #a83c0e 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      filter: drop-shadow(0 0 20px rgba(208,85,28,.2));
+    }
+    .process-title { font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: .65rem; letter-spacing: -.01em; }
+    .process-desc { font-size: .875rem; color: var(--ink-m); line-height: 1.75; max-width: 210px; margin: 0 auto; }
+    .process-arrow { display: flex; align-items: center; justify-content: center; color: var(--border); }
+
+    /* ── BEFORE/AFTER SHOWCASE ── */
+    .ba-showcase {
+      display: grid; grid-template-columns: 1fr 64px 1fr;
+      align-items: center; margin-top: 2.5rem;
+    }
+    .ba-showcase-img {
+      position: relative; overflow: hidden; aspect-ratio: 16/10;
+      box-shadow: 0 8px 40px rgba(0,0,0,.12);
+    }
+    .ba-showcase-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s cubic-bezier(.22,.68,0,1.1); }
+    .ba-showcase-item:hover .ba-showcase-img img { transform: scale(1.04); }
+    .ba-showcase-arrow { display: flex; align-items: center; justify-content: center; color: var(--accent); }
+
+    /* ── WHY ICON WRAP ── */
+    .why-icon-wrap {
+      width: 54px; height: 54px;
+      background: rgba(208,85,28,.12); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem;
+      transition: background .35s, transform .4s cubic-bezier(.22,.68,0,1.4);
+    }
+    .why-card:hover .why-icon-wrap { background: rgba(208,85,28,.22); transform: scale(1.08) rotate(-4deg); }
+    .why-icon {
+      width: 28px; height: 28px;
+      opacity: 1; color: rgba(255,255,255,.7);
+      transition: color .3s, transform .4s cubic-bezier(.22,.68,0,1.4);
+    }
+    .why-card:hover .why-icon { color: var(--accent); transform: none; }
+
+    /* ── MID CTA ── */
+    #cta-mid { background: var(--ink); border-top: 1px solid rgba(255,255,255,.06); }
+    .cta-mid-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 2rem; flex-wrap: wrap; padding: 3.5rem 0;
+    }
+    .cta-mid-label {
+      font-size: .58rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: .65rem;
+    }
+    .cta-mid-title {
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem); font-weight: 700;
+      letter-spacing: -.025em; color: #F0F0F0; line-height: 1.15;
+    }
+    .cta-mid-btn { flex-shrink: 0; padding: 1rem 2.5rem; white-space: nowrap; }
+
     /* ── REDUCED MOTION ── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -692,6 +770,11 @@
       .rev-grid { grid-template-columns: 1fr 1fr; }
       .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
+      /* Process */
+      .process-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .process-arrow { display: none; }
+      /* BA Showcase */
+      .ba-showcase { grid-template-columns: 1fr 48px 1fr; }
     }
     @media (max-width: 768px) {
       /* Nav */
@@ -724,6 +807,13 @@
       .form-card { padding: 1.5rem; }
       /* Before/After */
       .ba-lead { grid-template-columns: 1fr; gap: 1rem; }
+      .ba-showcase { grid-template-columns: 1fr; }
+      .ba-showcase-arrow { transform: rotate(90deg); margin: .75rem auto; }
+      /* Process */
+      .process-grid { grid-template-columns: 1fr; }
+      .process-arrow { display: none; }
+      /* CTA mid */
+      .cta-mid-inner { flex-direction: column; text-align: center; align-items: center; padding: 3rem 0; }
       /* Footer */
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; text-align: center; gap: .5rem; }
@@ -796,6 +886,9 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg>
       Now booking — free estimates within 24h
     </p>
+    <a href="#services" class="scroll-cue hero-anim" style="transition-delay:.8s" aria-label="Scroll to services">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg>
+    </a>
   </div>
   <div class="hero-right hero-anim-right">
     <img src="assets/kitchen-remodel-white-cabinets-island.jpeg" alt="Kitchen remodel by Nagy Custom Remodeling" id="heroImg" fetchpriority="high">
@@ -896,6 +989,37 @@
   </div>
 </section>
 
+<!-- ═══════════ HOW IT WORKS ═══════════ -->
+<section id="process">
+  <div class="container">
+    <div class="sec-label reveal">Simple Process</div>
+    <h2 class="sec-title reveal d1">How It Works</h2>
+    <div class="process-grid">
+      <div class="process-step reveal d1">
+        <span class="process-num">01</span>
+        <h3 class="process-title">Free Estimate</h3>
+        <p class="process-desc">We visit your home, review the scope, and deliver a clear written quote — no pressure, no surprises.</p>
+      </div>
+      <div class="process-arrow reveal d1">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+      </div>
+      <div class="process-step reveal d2">
+        <span class="process-num">02</span>
+        <h3 class="process-title">Plan &amp; Materials</h3>
+        <p class="process-desc">We help you choose materials that match your style and budget, then schedule at your convenience.</p>
+      </div>
+      <div class="process-arrow reveal d2">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+      </div>
+      <div class="process-step reveal d3">
+        <span class="process-num">03</span>
+        <h3 class="process-title">Build &amp; Deliver</h3>
+        <p class="process-desc">Licensed crew, clean site daily, on-schedule delivery — and a final walkthrough before we leave.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════ BEFORE / AFTER ═══════════ -->
 <section id="before-after">
   <div class="container">
@@ -904,24 +1028,22 @@
         <div class="sec-label reveal">Real Transformations</div>
         <h2 class="sec-title reveal d1" style="margin-bottom:0">Before &amp; After</h2>
       </div>
-      <p class="ba-intro reveal d2">Drag the slider to see the transformation. Every project is completed with a clean work site — no mess, no stress, just results.</p>
+      <p class="ba-intro reveal d2">From raw walls to finished dream space — every project delivered clean, on time, and to the highest standard.</p>
     </div>
-    <div class="ba-slider reveal scale-in d1" id="baSlider">
-      <div class="ba-before">
-        <img src="assets/kitchen-remodel-white-cabinets-island.jpeg" alt="Before renovation" loading="lazy" class="ba-before-img">
-        <span class="ba-tag ba-tag-before">Before</span>
+    <div class="ba-showcase">
+      <div class="ba-showcase-item reveal d1">
+        <div class="ba-showcase-img">
+          <img src="assets/studio-basement-renovation-drywall.jpeg" alt="Construction in progress" loading="lazy">
+          <span class="ba-tag ba-tag-before">In Progress</span>
+        </div>
       </div>
-      <div class="ba-after" id="baAfter">
-        <img src="assets/kitchen-remodel-white-cabinets-island.jpeg" alt="After renovation" loading="lazy">
-        <span class="ba-tag ba-tag-after">After</span>
+      <div class="ba-showcase-arrow reveal d2">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
       </div>
-      <div class="ba-handle" id="baHandle">
-        <div class="ba-line"></div>
-        <div class="ba-grip">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9,18 3,12 9,6"/>
-            <polyline points="15,6 21,12 15,18"/>
-          </svg>
+      <div class="ba-showcase-item reveal d3">
+        <div class="ba-showcase-img">
+          <img src="assets/living-room-fireplace-feature-wall-hardwood.jpeg" alt="Completed renovation" loading="lazy">
+          <span class="ba-tag ba-tag-after">Completed</span>
         </div>
       </div>
     </div>
@@ -935,39 +1057,47 @@
     <h2 class="sec-title reveal d1">Why Choose Nagy</h2>
     <div class="why-grid">
       <div class="why-card reveal d1">
-        <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 4 L28 8 L28 18 Q28 27 18 32 Q8 27 8 18 L8 8 Z"/>
-          <polyline points="13,18 17,22 24,14"/>
-        </svg>
+        <div class="why-icon-wrap">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 4 L28 8 L28 18 Q28 27 18 32 Q8 27 8 18 L8 8 Z"/>
+            <polyline points="13,18 17,22 24,14"/>
+          </svg>
+        </div>
         <h3 class="why-title">Licensed &amp; Insured</h3>
         <p class="why-desc">Fully licensed contractor in the state of Florida. Your home and investment are always protected.</p>
       </div>
       <div class="why-card reveal d2">
-        <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="18,4 22,14 33,14 24,21 27,32 18,25 9,32 12,21 3,14 14,14"/>
-        </svg>
+        <div class="why-icon-wrap">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="18,4 22,14 33,14 24,21 27,32 18,25 9,32 12,21 3,14 14,14"/>
+          </svg>
+        </div>
         <h3 class="why-title">5-Star Rated</h3>
         <p class="why-desc">Consistently 5-star reviews from Jacksonville homeowners. Our reputation is built one project at a time.</p>
       </div>
       <div class="why-card reveal d3">
-        <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="18" cy="18" r="14"/>
-          <path d="M12 18 Q12 12 18 12 Q24 12 24 18"/>
-          <path d="M12 20 Q14 26 18 26 Q22 26 24 20"/>
-          <line x1="10" y1="18" x2="26" y2="18"/>
-        </svg>
+        <div class="why-icon-wrap">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="18" r="14"/>
+            <path d="M12 18 Q12 12 18 12 Q24 12 24 18"/>
+            <path d="M12 20 Q14 26 18 26 Q22 26 24 20"/>
+            <line x1="10" y1="18" x2="26" y2="18"/>
+          </svg>
+        </div>
         <h3 class="why-title">Bilingual Team</h3>
         <p class="why-desc">We speak English &amp; Portuguese. Serving all of Jacksonville and surrounding areas with clear communication.</p>
       </div>
       <div class="why-card reveal d4">
-        <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M8 28 L28 28"/>
-          <path d="M10 28 L10 16 Q10 10 18 10 Q26 10 26 16 L26 28"/>
-          <path d="M14 22 Q18 18 22 22"/>
-          <line x1="18" y1="10" x2="18" y2="6"/>
-          <line x1="12" y1="8" x2="14" y2="11"/>
-          <line x1="24" y1="8" x2="22" y2="11"/>
-        </svg>
+        <div class="why-icon-wrap">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 28 L28 28"/>
+            <path d="M10 28 L10 16 Q10 10 18 10 Q26 10 26 16 L26 28"/>
+            <path d="M14 22 Q18 18 22 22"/>
+            <line x1="18" y1="10" x2="18" y2="6"/>
+            <line x1="12" y1="8" x2="14" y2="11"/>
+            <line x1="24" y1="8" x2="22" y2="11"/>
+          </svg>
+        </div>
         <h3 class="why-title">Clean Work Site</h3>
         <p class="why-desc">We protect your home and clean up completely every single day. Zero mess. Zero stress. Just results.</p>
       </div>
@@ -1027,6 +1157,19 @@
         <span class="gal-lbl">Exterior Renovation</span>
         <span class="gal-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA MID ═══════════ -->
+<section id="cta-mid">
+  <div class="container">
+    <div class="cta-mid-inner">
+      <div class="reveal">
+        <p class="cta-mid-label">Jacksonville's #1 Rated Remodeler</p>
+        <h2 class="cta-mid-title">Ready to transform your home?</h2>
+      </div>
+      <a href="#contact" class="btn-primary cta-mid-btn reveal d2">Get Free Estimate</a>
     </div>
   </div>
 </section>
