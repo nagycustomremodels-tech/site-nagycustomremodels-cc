@@ -141,12 +141,6 @@
       display: grid;
       grid-template-columns: 1fr 55%;
       overflow: hidden;
-      position: relative;
-    }
-    #hero::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 90px; z-index: 10; pointer-events: none;
-      background: linear-gradient(to top, var(--ink) 0%, transparent 100%);
     }
     .hero-left {
       display: flex; flex-direction: column; justify-content: center;
@@ -195,22 +189,19 @@
     .hero-link svg { transition: transform .25s ease; }
     .hero-link:hover svg { transform: translateX(4px); }
     /* ── PROOF BAR ── */
-    .proof-bar { background: var(--ink); padding: 3.5rem 0; }
+    .proof-bar { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2.5rem 0; }
     .proof-inner { display: flex; align-items: center; justify-content: center; }
     .proof-stat {
       flex: 1; display: flex; flex-direction: column; align-items: center;
       text-align: center; padding: 0 2.5rem;
     }
-    .proof-divider { width: 1px; height: 52px; background: rgba(255,255,255,.08); flex-shrink: 0; }
+    .proof-divider { width: 1px; height: 44px; background: var(--border); flex-shrink: 0; }
     .proof-num {
-      display: block; font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 700;
-      letter-spacing: -.04em; line-height: 1; margin-bottom: .55rem;
-      background: linear-gradient(180deg, #f07c3a 0%, #a83c0e 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      filter: drop-shadow(0 0 18px rgba(208,85,28,.4));
+      display: block; font-size: clamp(1.75rem, 2.5vw, 2.4rem); font-weight: 700;
+      letter-spacing: -.04em; line-height: 1; margin-bottom: .45rem; color: var(--accent);
     }
-    .proof-lbl { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.38); line-height: 1.5; }
-    .proof-check { background: none; -webkit-text-fill-color: initial; filter: none; color: var(--accent); display: flex; }
+    .proof-lbl { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-m); line-height: 1.5; }
+    .proof-check { color: var(--accent); display: flex; }
     .hero-right { position: relative; overflow: hidden; }
     .hero-right img {
       width: 100%; height: 100%; object-fit: cover; display: block;
