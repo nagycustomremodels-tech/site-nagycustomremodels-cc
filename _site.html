@@ -223,21 +223,28 @@
       content: ''; position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(0,0,0,.45) 0%, transparent 50%);
     }
+    @keyframes badge-float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-7px); }
+    }
     .hero-badge {
-      position: absolute; bottom: 2.5rem; left: 2rem; z-index: 2;
+      position: absolute; bottom: 8rem; left: 2rem; z-index: 3;
       background: rgba(255,255,255,.96); border: 1px solid var(--border);
       padding: 1rem 1.5rem; display: flex; flex-direction: column; gap: .2rem;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0,0,0,.12);
       opacity: 0; transform: translateY(12px);
       transition: opacity .6s ease .8s, transform .6s ease .8s;
     }
-    .hero-badge.loaded { opacity: 1; transform: none; }
+    .hero-badge.loaded {
+      opacity: 1; transform: translateY(0);
+      animation: badge-float 4s ease-in-out infinite;
+      animation-delay: 1.4s;
+    }
     .hero-badge-num {
       font-size: 1.9rem; font-weight: 700; letter-spacing: -.04em; line-height: 1;
       background: linear-gradient(180deg, #f07c3a 0%, #a83c0e 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       filter: drop-shadow(0 0 16px rgba(208,85,28,.5));
     }
     .hero-badge-lbl { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-m); }
@@ -656,6 +663,10 @@
     @media (max-width: 768px) {
       .nav-links, .nav-phone { display: none; }
       .hamburger { display: flex; }
+      .hero-badge { padding: .6rem 1rem; bottom: 5.5rem; left: 1rem; }
+      .hero-badge-num { font-size: 1.25rem; }
+      .hero-badge-lbl { font-size: .5rem; }
+      .hero-badge-stars { font-size: .6rem; }
       .svc-grid { grid-template-columns: 1fr; }
       .why-grid { grid-template-columns: 1fr; }
       .gal-grid { grid-template-columns: 1fr 1fr; }
