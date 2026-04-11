@@ -124,8 +124,8 @@
     .nav-right { display: flex; align-items: center; gap: 1rem; }
     .nav-phone { color: var(--ink-m); text-decoration: none; font-size: .82rem; letter-spacing: .04em; transition: color .2s; }
     .nav-phone:hover { color: var(--ink); }
-    .nav-ig { color: var(--ink-m); display: flex; align-items: center; transition: color .2s; }
-    .nav-ig:hover { color: var(--ink); }
+    .nav-links a.active { color: var(--ink); }
+    .nav-links a.active::after { transform: scaleX(1); }
     .btn-nav {
       background: var(--accent); color: #fff;
       padding: .55rem 1.25rem; font-family: var(--font); font-size: .72rem; font-weight: 600;
@@ -695,7 +695,7 @@
     }
     @media (max-width: 768px) {
       /* Nav */
-      .nav-links, .nav-phone, .nav-ig { display: none; }
+      .nav-links, .nav-phone { display: none; }
       .hamburger { display: flex; }
       /* Section spacing */
       section { padding: 3.5rem 0; }
@@ -746,9 +746,6 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <a href="https://instagram.com/nagycustomremodels" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      </a>
       <a href="tel:+19045771257" class="nav-phone">(904) 577-1257</a>
       <a href="#contact" class="btn-nav">Free Quote</a>
       <button class="hamburger" id="hamburger" aria-label="Open menu">
@@ -1341,6 +1338,21 @@
     });
   }, { threshold: 0.4 });
   document.querySelectorAll('.proof-num[data-count]').forEach(el => countObserver.observe(el));
+
+  // ── Active nav section indicator ──
+  const navSections = document.querySelectorAll('#services, #gallery, #reviews, #contact');
+  const navAnchors  = document.querySelectorAll('.nav-links a[href^="#"]');
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const link = document.querySelector('.nav-links a[href="#' + e.target.id + '"]');
+      if (!link) return;
+      if (e.isIntersecting) {
+        navAnchors.forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+  navSections.forEach(s => sectionObserver.observe(s));
 
   // ── Scroll reveal ──
   const revealObserver = new IntersectionObserver((entries) => {
