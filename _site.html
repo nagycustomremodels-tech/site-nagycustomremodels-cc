@@ -141,6 +141,12 @@
       display: grid;
       grid-template-columns: 1fr 55%;
       overflow: hidden;
+      position: relative;
+    }
+    #hero::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 90px; z-index: 10; pointer-events: none;
+      background: linear-gradient(to top, var(--ink) 0%, transparent 100%);
     }
     .hero-left {
       display: flex; flex-direction: column; justify-content: center;
