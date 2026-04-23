@@ -633,6 +633,10 @@ nav { transition: box-shadow .3s, background .3s; }
   .nav-links, .nav-phone { display: none; }
   .hamburger { display: flex; }
   section { padding: 3.5rem 0; }
+  /* Tipografia mínima mobile */
+  .inner-hero-sub { font-size: 1rem; }
+  /* Touch target links */
+  .hero-link { min-height: 44px; display: inline-flex; align-items: center; }
   .svc-grid { grid-template-columns: 1fr; }
   .svc-also { gap: .6rem; padding: 1.25rem 1.5rem; }
   .why-grid { grid-template-columns: 1fr; }
