@@ -647,6 +647,18 @@ nav { transition: box-shadow .3s, background .3s; }
   .logo img { transition: none; }
   /* Pulse do WhatsApp off em mobile */
   .wa-float::before { animation: none; }
+  /* Performance: desativar backdrop-filter em elementos pesados no mobile */
+  .ba-tag { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .gal-zoom { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .lb { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .lb-btn { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  /* Desativar hover transforms pesados em touch (causam jank no iOS) */
+  .why-card:hover { transform: none; box-shadow: none; }
+  .why-card:hover .why-icon-wrap { transform: none; }
+  .svc-card:hover { transform: none; box-shadow: none; }
+  .rev-card:hover { transform: none; box-shadow: none; }
+  .gal-item:hover img { transform: none; }
+  .btn-primary:hover { transform: none; box-shadow: none; }
   /* Reveal mais leve */
   .reveal {
     transform: translateY(16px);
