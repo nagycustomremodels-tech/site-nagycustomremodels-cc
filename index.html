@@ -165,16 +165,16 @@
       .logo img { transition: none; }
       /* Zerar will-change — layers demais esgotam GPU memory no mobile */
       .reveal, .hero-anim, .hero-anim-right { will-change: auto; }
-      /* Reveal: apenas opacity (compositor-only), sem transform */
+      /* Reveal: translateY pequeno (compositor-only sem will-change) + fade */
       .reveal {
-        transform: none;
-        transition: opacity 0.35s ease;
+        transform: translateY(8px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
       }
-      .reveal.from-left, .reveal.from-right, .reveal.scale-in { transform: none; }
-      .reveal.active { opacity: 1; }
+      .reveal.from-left, .reveal.from-right, .reveal.scale-in { transform: translateY(8px); }
+      .reveal.active { opacity: 1; transform: none; }
       /* hero-anim: fade simples */
-      .hero-anim { transform: none; transition: opacity 0.45s ease; }
-      .hero-anim-right { transform: none; transition: opacity 0.55s ease; }
+      .hero-anim { transform: translateY(8px); transition: opacity 0.45s ease, transform 0.45s ease; }
+      .hero-anim-right { transform: translateY(8px); transition: opacity 0.55s ease, transform 0.55s ease; }
       /* Delays reduzidos */
       .reveal.d1 { transition-delay: 0.04s; }
       .reveal.d2 { transition-delay: 0.08s; }
@@ -1581,7 +1581,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         revealObserver.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.1, rootMargin: '0px 0px 80px 0px' });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
   // ── Scroll handler com rAF throttle ──
