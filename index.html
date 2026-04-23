@@ -156,22 +156,32 @@
 
     /* ── MOBILE: desativar efeitos pesados ── */
     @media (max-width: 768px) {
+      html { scroll-behavior: auto; }
       nav {
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        background: rgba(255,255,255,.98);
+        backdrop-filter: none; -webkit-backdrop-filter: none;
+        background: rgba(255,255,255,.98); transition: none;
       }
-      nav .nav-inner {
-        transition: none;
-      }
-      .logo img {
-        transition: none;
-      }
+      nav .nav-inner { transition: none; }
+      .logo img { transition: none; }
+      /* Zerar will-change — layers demais esgotam GPU memory no mobile */
+      .reveal, .hero-anim, .hero-anim-right { will-change: auto; }
+      /* Reveal: apenas opacity (compositor-only), sem transform */
       .reveal {
-        transform: translateY(16px);
-        transition: opacity 0.45s ease, transform 0.45s ease;
+        transform: none;
+        transition: opacity 0.35s ease;
       }
-      .reveal.from-left, .reveal.from-right { transform: translateY(16px); }
+      .reveal.from-left, .reveal.from-right, .reveal.scale-in { transform: none; }
+      .reveal.active { opacity: 1; }
+      /* hero-anim: fade simples */
+      .hero-anim { transform: none; transition: opacity 0.45s ease; }
+      .hero-anim-right { transform: none; transition: opacity 0.55s ease; }
+      /* Delays reduzidos */
+      .reveal.d1 { transition-delay: 0.04s; }
+      .reveal.d2 { transition-delay: 0.08s; }
+      .reveal.d3 { transition-delay: 0.12s; }
+      .reveal.d4 { transition-delay: 0.16s; }
+      .reveal.d5 { transition-delay: 0.20s; }
+      .reveal.d6 { transition-delay: 0.24s; }
       .wa-float::before { animation: none; }
     }
 
@@ -881,7 +891,7 @@
       /* Badge — sem float animation no mobile */
       .hero-badge { padding: .6rem 1rem; bottom: 1.25rem; left: 1rem; backdrop-filter: none; -webkit-backdrop-filter: none; }
       .hero-badge.loaded { animation: none; }
-      .hero-badge-num { font-size: 1.2rem; }
+      .hero-badge-num { font-size: 1.2rem; filter: none; }
       .hero-badge-lbl { font-size: .5rem; }
       .hero-badge-stars { font-size: .6rem; }
       /* Desativar hover transforms pesados em touch */
@@ -1583,21 +1593,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   function onScroll() {
     const s = window.pageYOffset;
+    const mobile = isMobile();
 
     // Parallax apenas desktop
-    if (heroImg) {
-      if (!isMobile() && s < window.innerHeight) {
-        heroImg.style.transform = 'translateY(' + (s * 0.18) + 'px)';
-      } else {
-        heroImg.style.transform = 'none';
-      }
+    if (!mobile && heroImg && s < window.innerHeight) {
+      heroImg.style.transform = 'translateY(' + (s * 0.18) + 'px)';
     }
 
-    // Nav scrolled — só atualiza se mudou
-    const scrolled = s > 5;
-    if (scrolled !== lastScrolled) {
-      mainNav.classList.toggle('scrolled', scrolled);
-      lastScrolled = scrolled;
+    // Nav scrolled — skip no mobile (evita repaint desnecessário)
+    if (!mobile) {
+      const scrolled = s > 5;
+      if (scrolled !== lastScrolled) {
+        mainNav.classList.toggle('scrolled', scrolled);
+        lastScrolled = scrolled;
+      }
     }
 
     ticking = false;
