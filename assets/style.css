@@ -655,19 +655,23 @@ nav { transition: box-shadow .3s, background .3s; }
   .rev-card:hover { transform: none; box-shadow: none; }
   .gal-item:hover img { transform: none; }
   .btn-primary:hover { transform: none; box-shadow: none; }
-  /* Reveal: opacity-only no mobile — fluido, sem criar layer GPU mid-scroll */
-  .reveal, .reveal.from-left, .reveal.from-right, .reveal.scale-in {
-    opacity: 0; transform: none;
-    transition: opacity .5s ease;
+  /* Reveal: slide-up + fade — movimento real no mobile.
+     rootMargin positivo no JS (15%) dispara antes do elemento entrar = sem piscar */
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity .7s ease, transform .7s ease;
     will-change: auto;
   }
-  .reveal.active { opacity: 1; }
-  .reveal.d1 { transition-delay: .05s; }
-  .reveal.d2 { transition-delay: .1s; }
-  .reveal.d3 { transition-delay: .15s; }
-  .reveal.d4 { transition-delay: .2s; }
-  .reveal.d5 { transition-delay: .25s; }
-  .reveal.d6 { transition-delay: .3s; }
+  .reveal.from-left  { transform: translateX(-20px); }
+  .reveal.from-right { transform: translateX(20px); }
+  .reveal.scale-in   { transform: scale(.96); }
+  .reveal.active { opacity: 1; transform: none; }
+  .reveal.d1 { transition-delay: .08s; }
+  .reveal.d2 { transition-delay: .16s; }
+  .reveal.d3 { transition-delay: .24s; }
+  .reveal.d4 { transition-delay: .32s; }
+  .reveal.d5 { transition-delay: .40s; }
+  .reveal.d6 { transition-delay: .48s; }
   /* contact-item: remover padding transition (layout trigger) */
   .contact-item { transition: color 0.2s; }
   .svc-grid { grid-template-columns: 1fr; }
