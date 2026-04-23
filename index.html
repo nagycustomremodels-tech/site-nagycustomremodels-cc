@@ -154,24 +154,35 @@
     }
     .hero-anim-right.loaded { opacity: 1; transform: none; will-change: auto; }
 
-    /* ── MOBILE: desativar efeitos pesados ── */
+    /* ── MOBILE: animações leves e fluidas ── */
     @media (max-width: 768px) {
+      /* scroll-behavior smooth quebra momentum iOS — manter auto */
       html { scroll-behavior: auto; }
+      /* nav: backdrop-filter pesado em mobile, mantém transição leve */
       nav {
         backdrop-filter: none; -webkit-backdrop-filter: none;
-        background: rgba(255,255,255,.98); transition: none;
+        background: rgba(255,255,255,.97);
       }
-      nav .nav-inner { transition: none; }
-      .logo img { transition: none; }
-      /* Reveal: desativado no mobile — elementos visíveis desde o início, sem piscar */
+      /* Reveal: opacity-only (sem transform) — não cria layer GPU mid-scroll */
       .reveal, .reveal.from-left, .reveal.from-right, .reveal.scale-in {
-        opacity: 1; transform: none; transition: none; will-change: auto;
+        opacity: 0; transform: none;
+        transition: opacity .5s ease;
+        will-change: auto;
       }
-      .reveal.d1, .reveal.d2, .reveal.d3, .reveal.d4, .reveal.d5, .reveal.d6 { transition-delay: 0; }
-      /* hero-anim: fade de entrada apenas (ao carregar a página, não ao scroll) */
-      .hero-anim { transform: none; transition: opacity 0.4s ease; }
-      .hero-anim-right { transform: none; transition: opacity 0.5s ease; }
-      .wa-float::before { animation: none; }
+      .reveal.active { opacity: 1; }
+      .reveal.d1 { transition-delay: .05s; }
+      .reveal.d2 { transition-delay: .1s; }
+      .reveal.d3 { transition-delay: .15s; }
+      .reveal.d4 { transition-delay: .2s; }
+      .reveal.d5 { transition-delay: .25s; }
+      .reveal.d6 { transition-delay: .3s; }
+      /* hero-anim: fade + leve translate na carga (não no scroll) */
+      .hero-anim { transform: translateY(8px); transition: opacity .55s ease, transform .55s ease; }
+      .hero-anim.loaded { transform: none; }
+      .hero-anim-right { transform: translateY(8px); transition: opacity .65s ease, transform .65s ease; }
+      .hero-anim-right.loaded { transform: none; }
+      /* Hero image: remover will-change permanente (causa repaint no iOS URL bar) */
+      .hero-right img { transition: none; will-change: auto; }
     }
 
     /* ── NAV ── */
@@ -247,7 +258,9 @@
 
     /* ── HERO ── */
     #hero {
-      height: 92vh; min-height: 580px;
+      height: 92vh;
+      height: 92dvh;
+      min-height: 580px;
       padding-top: var(--nav);
       display: grid;
       grid-template-columns: 1fr 55%;
@@ -339,8 +352,9 @@
     .hero-right { position: relative; overflow: hidden; }
     .hero-right img {
       width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.1s linear;
-      will-change: transform;
+    }
+    @media (min-width: 769px) {
+      .hero-right img { transition: transform 0.1s linear; will-change: transform; }
     }
     .hero-right::after {
       content: ''; position: absolute; inset: 0;
@@ -877,20 +891,11 @@
       .hero-sub { font-size: 1rem; }
       /* Touch target hero-link */
       .hero-link { min-height: 44px; display: inline-flex; align-items: center; }
-      /* Badge — sem float animation no mobile */
+      /* Badge — backdrop-filter pesado no mobile, mas float animation OK (translateY puro) */
       .hero-badge { padding: .6rem 1rem; bottom: 1.25rem; left: 1rem; backdrop-filter: none; -webkit-backdrop-filter: none; }
-      .hero-badge.loaded { animation: none; }
-      .hero-badge-num { font-size: 1.2rem; filter: none; }
+      .hero-badge-num { font-size: 1.2rem; }
       .hero-badge-lbl { font-size: .5rem; }
       .hero-badge-stars { font-size: .6rem; }
-      /* Desativar hover transforms pesados em touch */
-      .svc-card:hover { transform: none; box-shadow: none; }
-      .svc-card:hover .svc-num { transform: none; }
-      .svc-card:hover .svc-icon { transform: none; }
-      .gal-item:hover img { transform: none; }
-      .rev-card:hover { transform: none; box-shadow: none; }
-      .contact-item:hover { padding-left: 0; }
-      .contact-item:hover svg { transform: none; }
       /* Services */
       .svc-grid { grid-template-columns: 1fr; }
       .svc-also { gap: .6rem; padding: 1.25rem 1.5rem; }
@@ -1562,20 +1567,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
   navSections.forEach(s => sectionObserver.observe(s));
 
-  // ── Scroll reveal — apenas desktop (mobile: visível imediatamente, sem piscar) ──
-  if (window.innerWidth > 768) {
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('active');
-          revealObserver.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-  } else {
-    document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
-  }
+  // ── Scroll reveal — desktop e mobile (mobile usa opacity-only, não cria layer GPU) ──
+  // rootMargin generoso dispara antes do elemento entrar = sem piscar mid-scroll
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('active');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px 15% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
   // ── Scroll handler com rAF throttle ──
   const heroImg  = document.getElementById('heroImg');
@@ -1593,13 +1595,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       heroImg.style.transform = 'translateY(' + (s * 0.18) + 'px)';
     }
 
-    // Nav scrolled — skip no mobile (evita repaint desnecessário)
-    if (!mobile) {
-      const scrolled = s > 5;
-      if (scrolled !== lastScrolled) {
-        mainNav.classList.toggle('scrolled', scrolled);
-        lastScrolled = scrolled;
-      }
+    // Nav scrolled — desktop e mobile (toggle de classe é leve)
+    const scrolled = s > 5;
+    if (scrolled !== lastScrolled) {
+      mainNav.classList.toggle('scrolled', scrolled);
+      lastScrolled = scrolled;
     }
 
     ticking = false;

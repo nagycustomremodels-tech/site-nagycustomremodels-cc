@@ -638,32 +638,36 @@ nav { transition: box-shadow .3s, background .3s; }
   .inner-hero-sub { font-size: 1rem; }
   /* Touch target links */
   .hero-link { min-height: 44px; display: inline-flex; align-items: center; }
-  /* Performance: nav sem transição, backdrop e box-shadow off */
+  /* Nav: backdrop-filter pesado em mobile, mas mantém transição leve */
   nav {
     backdrop-filter: none; -webkit-backdrop-filter: none;
-    background: rgba(255,255,255,.98); transition: none;
+    background: rgba(255,255,255,.97);
   }
-  .nav-inner { transition: none; }
-  .logo img { transition: none; }
-  /* Pulse do WhatsApp off em mobile */
-  .wa-float::before { animation: none; }
-  /* Performance: backdrop-filter off em todos os elementos */
+  /* backdrop-filter off em elementos com blur pesado */
   .ba-tag { backdrop-filter: none; -webkit-backdrop-filter: none; }
   .gal-zoom { backdrop-filter: none; -webkit-backdrop-filter: none; }
   .lb { backdrop-filter: none; -webkit-backdrop-filter: none; }
   .lb-btn { backdrop-filter: none; -webkit-backdrop-filter: none; }
-  /* Desativar hover transforms em touch */
+  /* Hover transforms desativados em touch (sticky hover ruim) */
   .why-card:hover { transform: none; box-shadow: none; }
   .why-card:hover .why-icon-wrap { transform: none; }
   .svc-card:hover { transform: none; box-shadow: none; }
   .rev-card:hover { transform: none; box-shadow: none; }
   .gal-item:hover img { transform: none; }
   .btn-primary:hover { transform: none; box-shadow: none; }
-  /* Reveal: desativado no mobile — sem piscar */
+  /* Reveal: opacity-only no mobile — fluido, sem criar layer GPU mid-scroll */
   .reveal, .reveal.from-left, .reveal.from-right, .reveal.scale-in {
-    opacity: 1; transform: none; transition: none; will-change: auto;
+    opacity: 0; transform: none;
+    transition: opacity .5s ease;
+    will-change: auto;
   }
-  .reveal.d1, .reveal.d2, .reveal.d3, .reveal.d4, .reveal.d5, .reveal.d6 { transition-delay: 0; }
+  .reveal.active { opacity: 1; }
+  .reveal.d1 { transition-delay: .05s; }
+  .reveal.d2 { transition-delay: .1s; }
+  .reveal.d3 { transition-delay: .15s; }
+  .reveal.d4 { transition-delay: .2s; }
+  .reveal.d5 { transition-delay: .25s; }
+  .reveal.d6 { transition-delay: .3s; }
   /* contact-item: remover padding transition (layout trigger) */
   .contact-item { transition: color 0.2s; }
   .svc-grid { grid-template-columns: 1fr; }
