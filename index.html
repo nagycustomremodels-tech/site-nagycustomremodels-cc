@@ -163,25 +163,14 @@
       }
       nav .nav-inner { transition: none; }
       .logo img { transition: none; }
-      /* Zerar will-change — layers demais esgotam GPU memory no mobile */
-      .reveal, .hero-anim, .hero-anim-right { will-change: auto; }
-      /* Reveal: translateY pequeno (compositor-only sem will-change) + fade */
-      .reveal {
-        transform: translateY(8px);
-        transition: opacity 0.4s ease, transform 0.4s ease;
+      /* Reveal: desativado no mobile — elementos visíveis desde o início, sem piscar */
+      .reveal, .reveal.from-left, .reveal.from-right, .reveal.scale-in {
+        opacity: 1; transform: none; transition: none; will-change: auto;
       }
-      .reveal.from-left, .reveal.from-right, .reveal.scale-in { transform: translateY(8px); }
-      .reveal.active { opacity: 1; transform: none; }
-      /* hero-anim: fade simples */
-      .hero-anim { transform: translateY(8px); transition: opacity 0.45s ease, transform 0.45s ease; }
-      .hero-anim-right { transform: translateY(8px); transition: opacity 0.55s ease, transform 0.55s ease; }
-      /* Delays reduzidos */
-      .reveal.d1 { transition-delay: 0.04s; }
-      .reveal.d2 { transition-delay: 0.08s; }
-      .reveal.d3 { transition-delay: 0.12s; }
-      .reveal.d4 { transition-delay: 0.16s; }
-      .reveal.d5 { transition-delay: 0.20s; }
-      .reveal.d6 { transition-delay: 0.24s; }
+      .reveal.d1, .reveal.d2, .reveal.d3, .reveal.d4, .reveal.d5, .reveal.d6 { transition-delay: 0; }
+      /* hero-anim: fade de entrada apenas (ao carregar a página, não ao scroll) */
+      .hero-anim { transform: none; transition: opacity 0.4s ease; }
+      .hero-anim-right { transform: none; transition: opacity 0.5s ease; }
       .wa-float::before { animation: none; }
     }
 
@@ -1573,16 +1562,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
   navSections.forEach(s => sectionObserver.observe(s));
 
-  // ── Scroll reveal ──
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('active');
-        revealObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px 80px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  // ── Scroll reveal — apenas desktop (mobile: visível imediatamente, sem piscar) ──
+  if (window.innerWidth > 768) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('active');
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+  }
 
   // ── Scroll handler com rAF throttle ──
   const heroImg  = document.getElementById('heroImg');

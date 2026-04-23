@@ -659,9 +659,11 @@ nav { transition: box-shadow .3s, background .3s; }
   .rev-card:hover { transform: none; box-shadow: none; }
   .gal-item:hover img { transform: none; }
   .btn-primary:hover { transform: none; box-shadow: none; }
-  /* Reveal: translateY pequeno (compositor-only) + will-change auto */
-  .reveal { will-change: auto; transform: translateY(8px); transition: opacity 0.4s ease, transform 0.4s ease; }
-  .reveal.from-left, .reveal.from-right, .reveal.scale-in { transform: translateY(8px); }
+  /* Reveal: desativado no mobile — sem piscar */
+  .reveal, .reveal.from-left, .reveal.from-right, .reveal.scale-in {
+    opacity: 1; transform: none; transition: none; will-change: auto;
+  }
+  .reveal.d1, .reveal.d2, .reveal.d3, .reveal.d4, .reveal.d5, .reveal.d6 { transition-delay: 0; }
   /* contact-item: remover padding transition (layout trigger) */
   .contact-item { transition: color 0.2s; }
   .svc-grid { grid-template-columns: 1fr; }
