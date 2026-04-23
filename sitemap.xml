@@ -36,4 +36,11 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://nagycustomremodels.com/privacy/</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>
