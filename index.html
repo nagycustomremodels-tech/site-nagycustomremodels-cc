@@ -121,6 +121,7 @@
       opacity: 0;
       transform: translateY(28px);
       transition: opacity 0.75s cubic-bezier(.22,.68,0,1.2), transform 0.75s cubic-bezier(.22,.68,0,1.2);
+      will-change: opacity, transform;
     }
     .reveal.from-left  { transform: translateX(-28px); }
     .reveal.from-right { transform: translateX(28px); }
@@ -128,6 +129,7 @@
     .reveal.active {
       opacity: 1;
       transform: none;
+      will-change: auto;
     }
     .reveal.d1 { transition-delay: 0.08s; }
     .reveal.d2 { transition-delay: 0.16s; }
@@ -141,14 +143,37 @@
       opacity: 0;
       transform: translateY(22px);
       transition: opacity .65s ease, transform .65s ease;
+      will-change: opacity, transform;
     }
-    .hero-anim.loaded { opacity: 1; transform: none; }
+    .hero-anim.loaded { opacity: 1; transform: none; will-change: auto; }
     .hero-anim-right {
       opacity: 0;
       transform: translateX(32px);
       transition: opacity .9s ease, transform .9s ease;
+      will-change: opacity, transform;
     }
-    .hero-anim-right.loaded { opacity: 1; transform: none; }
+    .hero-anim-right.loaded { opacity: 1; transform: none; will-change: auto; }
+
+    /* ── MOBILE: desativar efeitos pesados ── */
+    @media (max-width: 768px) {
+      nav {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(255,255,255,.98);
+      }
+      nav .nav-inner {
+        transition: none;
+      }
+      .logo img {
+        transition: none;
+      }
+      .reveal {
+        transform: translateY(16px);
+        transition: opacity 0.45s ease, transform 0.45s ease;
+      }
+      .reveal.from-left, .reveal.from-right { transform: translateY(16px); }
+      .wa-float::before { animation: none; }
+    }
 
     /* ── NAV ── */
     nav {
@@ -1540,17 +1565,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  // ── Hero parallax (desktop only — mobile causa jank) ──
-  const heroImg = document.getElementById('heroImg');
+  // ── Scroll handler com rAF throttle ──
+  const heroImg  = document.getElementById('heroImg');
+  const mainNav  = document.getElementById('mainNav');
   const isMobile = () => window.innerWidth <= 768;
-  window.addEventListener('scroll', () => {
+  let ticking = false;
+  let lastScrolled = null;
+
+  function onScroll() {
     const s = window.pageYOffset;
-    if (!isMobile() && s < window.innerHeight && heroImg) {
-      heroImg.style.transform = 'translateY(' + (s * 0.18) + 'px)';
-    } else if (heroImg) {
-      heroImg.style.transform = 'none';
+
+    // Parallax apenas desktop
+    if (heroImg) {
+      if (!isMobile() && s < window.innerHeight) {
+        heroImg.style.transform = 'translateY(' + (s * 0.18) + 'px)';
+      } else {
+        heroImg.style.transform = 'none';
+      }
     }
-    document.getElementById('mainNav').classList.toggle('scrolled', s > 5);
+
+    // Nav scrolled — só atualiza se mudou
+    const scrolled = s > 5;
+    if (scrolled !== lastScrolled) {
+      mainNav.classList.toggle('scrolled', scrolled);
+      lastScrolled = scrolled;
+    }
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(onScroll);
+      ticking = true;
+    }
   }, { passive: true });
 
   // ── Before / After slider ──

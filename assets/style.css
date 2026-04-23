@@ -637,6 +637,22 @@ nav { transition: box-shadow .3s, background .3s; }
   .inner-hero-sub { font-size: 1rem; }
   /* Touch target links */
   .hero-link { min-height: 44px; display: inline-flex; align-items: center; }
+  /* Performance: desativar backdrop-filter e transições pesadas no nav */
+  nav {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255,255,255,.98);
+  }
+  .nav-inner { transition: none; }
+  .logo img { transition: none; }
+  /* Pulse do WhatsApp off em mobile */
+  .wa-float::before { animation: none; }
+  /* Reveal mais leve */
+  .reveal {
+    transform: translateY(16px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .reveal.from-left, .reveal.from-right { transform: translateY(16px); }
   .svc-grid { grid-template-columns: 1fr; }
   .svc-also { gap: .6rem; padding: 1.25rem 1.5rem; }
   .why-grid { grid-template-columns: 1fr; }
