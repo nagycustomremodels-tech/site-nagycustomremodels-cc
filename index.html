@@ -1691,37 +1691,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.head.appendChild(s);
   }
 
-  window._initGMB = function() {
-    const dummy = document.createElement('div');
-    const svc   = new google.maps.places.PlacesService(dummy);
-    svc.getDetails(
-      { placeId: GMB_PLACE_ID, fields: ['reviews', 'rating', 'user_ratings_total', 'url'] },
-      function(place, status) {
-        if (status !== google.maps.places.PlacesServiceStatus.OK) return;
-        const grid = document.getElementById('revGrid');
-        if (!grid || !place.reviews || !place.reviews.length) return;
+  var GMB_CACHE_KEY = 'gmb_cache_' + GMB_PLACE_ID;
+  var GMB_CACHE_TTL = 24 * 60 * 60 * 1000; // 24h
 
-        // Show Google badge with real rating
-        const badge = document.getElementById('revGoogleBadge');
-        if (badge) {
-          badge.style.display = 'flex';
-          // Only set href to trusted Google domain
-          if (place.url && place.url.startsWith('https://')) badge.href = place.url;
-          const rt = document.getElementById('revRatingText');
-          if (rt && place.rating) {
-            rt.textContent = place.rating.toFixed(1) + ' \u00b7 ' + (place.user_ratings_total || '') + ' reviews on Google';
-          }
-        }
+  function renderGMB(place) {
+    const grid = document.getElementById('revGrid');
+    if (!grid || !place.reviews || !place.reviews.length) return;
 
-        // Update section title and hero stat
-        const title = document.querySelector('#reviews .sec-title');
-        if (title && place.rating) title.textContent = place.rating.toFixed(1) + ' \u2605 on Google';
-        const heroRating = document.getElementById('heroRating');
-        if (heroRating && place.rating) heroRating.textContent = place.rating.toFixed(1) + '\u2605';
+    // Show Google badge with real rating
+    const badge = document.getElementById('revGoogleBadge');
+    if (badge) {
+      badge.style.display = 'flex';
+      if (place.url && place.url.startsWith('https://')) badge.href = place.url;
+      const rt = document.getElementById('revRatingText');
+      if (rt && place.rating) {
+        rt.textContent = place.rating.toFixed(1) + ' \u00b7 ' + (place.user_ratings_total || '') + ' reviews on Google';
+      }
+    }
 
-        // Render up to 6 reviews using safe DOM methods (no innerHTML on user content)
-        const toShow = place.reviews.filter(function(r) { return r.rating >= 4; }).slice(0, 6);
-        if (!toShow.length) return; // keep static if no 4+ star reviews
+    // Update section title and hero stat
+    const title = document.querySelector('#reviews .sec-title');
+    if (title && place.rating) title.textContent = place.rating.toFixed(1) + ' \u2605 on Google';
+    const heroRating = document.getElementById('heroRating');
+    if (heroRating && place.rating) heroRating.textContent = place.rating.toFixed(1) + '\u2605';
+
+    // Sort: highest rating first, then most recent
+    var sorted = place.reviews.slice().sort(function(a, b) {
+      if (b.rating !== a.rating) return b.rating - a.rating;
+      return (b.time || 0) - (a.time || 0);
+    });
+
+    // Render up to 6 reviews using safe DOM methods (no innerHTML on user content)
+    const toShow = sorted.filter(function(r) { return r.rating >= 4; }).slice(0, 6);
+    if (!toShow.length) return; // keep static if no 4+ star reviews
 
         while (grid.firstChild) grid.removeChild(grid.firstChild); // clear safely
 
@@ -1753,6 +1755,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           revealObserver.observe(card);
         });
+  }
+
+  window._initGMB = function() {
+    // Serve from cache if still fresh
+    try {
+      var cached = localStorage.getItem(GMB_CACHE_KEY);
+      if (cached) {
+        var parsed = JSON.parse(cached);
+        if (Date.now() - parsed.ts < GMB_CACHE_TTL) {
+          renderGMB(parsed.place);
+          return;
+        }
+      }
+    } catch(e) {}
+
+    const dummy = document.createElement('div');
+    const svc   = new google.maps.places.PlacesService(dummy);
+    svc.getDetails(
+      { placeId: GMB_PLACE_ID, fields: ['reviews', 'rating', 'user_ratings_total', 'url'] },
+      function(place, status) {
+        if (status !== google.maps.places.PlacesServiceStatus.OK) return;
+        try {
+          localStorage.setItem(GMB_CACHE_KEY, JSON.stringify({ ts: Date.now(), place: place }));
+        } catch(e) {}
+        renderGMB(place);
       }
     );
   };
