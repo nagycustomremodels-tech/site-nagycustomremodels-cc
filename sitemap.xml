@@ -1,46 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://nagycustomremodels.com/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/primary-bathroom-freestanding-tub-marble-walls-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/kitchen-remodel-white-cabinets-island.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/walk-in-shower-marble-tile-built-in-bench-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/flooring-hallway-wood-contemporary.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/covered-balcony-composite-decking-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/kitchenette-tropical-wallpaper-backsplash-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/living-room-fireplace-marble-wood-slat-wall-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/powder-room-floating-vanity-navy-accent-wall-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/marble-shower-pebble-floor-brass-fixtures-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/walk-in-shower-marble-frameless-glass-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/butler-pantry-floating-shelves-light-wood-cabinets-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/powder-room-patterned-wallpaper-brass-mirror-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/second-story-hardwood-deck-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/bathroom-remodel-freestanding-tub-glass-shower-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/wet-bar-quartz-counter-subway-tile-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/bathroom-vanity-marble-top-textured-wallpaper-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/marble-shower-brass-handheld-niche-jacksonville-fl.webp</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://nagycustomremodels.com/services/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/kitchen-remodel-white-cabinets-island.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/kitchen-island-black-countertop-pendant.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/primary-bathroom-freestanding-tub-marble-walls-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/walk-in-shower-marble-tile-built-in-bench-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/flooring-hallway-wood-contemporary.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/marble-shower-pebble-floor-brass-fixtures-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/covered-balcony-composite-decking-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/rooftop-deck-red-stained-hardwood-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/wet-bar-white-cabinets-wine-fridge-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/butler-pantry-floating-shelves-light-wood-cabinets-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/living-room-fireplace-marble-wood-slat-wall-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/studio-basement-renovation-drywall.webp</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://nagycustomremodels.com/portfolio/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/primary-bathroom-freestanding-tub-marble-walls-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/kitchen-remodel-white-cabinets-island.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/rooftop-deck-red-stained-hardwood-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/living-room-fireplace-marble-wood-slat-wall-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/walk-in-shower-marble-tile-built-in-bench-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/wet-bar-white-cabinets-wine-fridge-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/kitchen-island-black-countertop-pendant.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/flooring-hallway-wood-contemporary.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/exterior-porch-colonial-style-renovation.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/bathroom-vanity-marble-top-textured-wallpaper-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/butler-pantry-floating-shelves-light-wood-cabinets-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/second-story-hardwood-deck-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/powder-room-floating-vanity-navy-accent-wall-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/flooring-hardwood-deck-wooden-ceiling.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/walk-in-shower-marble-frameless-glass-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/wet-bar-quartz-counter-subway-tile-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/kitchen-laundry-room-grey-cabinetry.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/bathroom-remodel-freestanding-tub-glass-shower-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/covered-balcony-composite-decking-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/kitchenette-tropical-wallpaper-backsplash-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/marble-shower-pebble-floor-brass-fixtures-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/living-room-fireplace-feature-wall-hardwood.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/powder-room-patterned-wallpaper-brass-mirror-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/wet-bar-remodel-under-cabinet-lighting-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/bathroom-shower-glass-enclosure-renovation.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/interior-accent-wall-wood-siding-modern.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/marble-shower-brass-handheld-niche-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/bathroom-vanity-double-marble-luxury.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/exterior-home-white-modern-facade-driveway.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/studio-basement-renovation-drywall.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://nagycustomremodels.com/contact/</loc>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <url>
-    <loc>https://nagycustomremodels.com/contact/</loc>
-    <lastmod>2026-04-23</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
   <url>
     <loc>https://nagycustomremodels.com/about/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/living-room-fireplace-marble-wood-slat-wall-jacksonville-fl.webp</image:loc></image:image>
+    <image:image><image:loc>https://nagycustomremodels.com/assets/walk-in-shower-marble-frameless-glass-jacksonville-fl.webp</image:loc></image:image>
   </url>
-
-  <url>
-    <loc>https://nagycustomremodels.com/privacy/</loc>
-    <lastmod>2026-04-23</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
 </urlset>
