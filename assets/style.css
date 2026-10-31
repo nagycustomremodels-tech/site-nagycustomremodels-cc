@@ -464,3 +464,12 @@ a.footer-link:hover { color: var(--accent-l); }
   .lb-caption { bottom: 4rem; }
   .lb-counter { bottom: 1.4rem; left: 50%; right: auto; transform: translateX(-50%); }
 }
+
+/* ── Video pause control ── */
+.gal-video { position: relative; }
+.video-toggle {
+  position: absolute; right: .5rem; bottom: .5rem; min-width: 44px; min-height: 32px; padding: .3rem .7rem;
+  background: rgba(0,0,0,.65); color: var(--white); border: 1px solid rgba(255,255,255,.35); cursor: pointer;
+  font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+}
+.video-toggle:hover { background: var(--accent); border-color: var(--accent); }

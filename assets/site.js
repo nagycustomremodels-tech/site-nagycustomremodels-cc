@@ -9,17 +9,20 @@
   // ── Mobile menu ──
   var ham = document.getElementById('hamburger');
   var mob = document.getElementById('mobMenu');
+  function menuOpen() { return !!mob && mob.classList.contains('open'); }
   function setMenu(open) {
-    if (!ham || !mob) return;
+    if (!ham || !mob || open === menuOpen()) return; // não mexe no overflow se nada mudou (lightbox)
     ham.setAttribute('aria-expanded', String(open));
     ham.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     mob.classList.toggle('open', open);
     document.body.style.overflow = open ? 'hidden' : '';
   }
   if (ham && mob) {
-    ham.addEventListener('click', function () { setMenu(ham.getAttribute('aria-expanded') !== 'true'); });
+    ham.addEventListener('click', function () { setMenu(!menuOpen()); });
     mob.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menuOpen()) { setMenu(false); ham.focus(); }
+    });
     window.addEventListener('resize', function () { if (window.innerWidth > 900) setMenu(false); });
   }
 
@@ -61,10 +64,22 @@
     counters.forEach(function (el) { countObserver.observe(el); });
   }
 
-  // ── Autoplay videos: respeita reduced-motion ──
-  if (reduceMotion) {
-    document.querySelectorAll('video[autoplay]').forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
-  }
+  // ── Autoplay videos: respeita reduced-motion + botão de pausa (WCAG 2.2.2) ──
+  document.querySelectorAll('video[autoplay]').forEach(function (v) {
+    if (reduceMotion) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; return; }
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'video-toggle';
+    var sync = function () {
+      btn.textContent = v.paused ? 'Play' : 'Pause';
+      btn.setAttribute('aria-label', (v.paused ? 'Play' : 'Pause') + ' video');
+    };
+    btn.addEventListener('click', function () { if (v.paused) v.play(); else v.pause(); });
+    v.addEventListener('play', sync);
+    v.addEventListener('pause', sync);
+    sync();
+    v.parentNode.appendChild(btn);
+  });
 
   // ── Gallery filters (portfolio) ──
   var filterBtns = document.querySelectorAll('.filter-btn[data-filter]');
@@ -141,6 +156,7 @@
     return t.toISOString().slice(0, 10);
   }
   function smsLink(body) {
+    if (body.toWellFormed) body = body.toWellFormed(); // surrogate solto faria encodeURIComponent lançar URIError
     // "?&body=" é aceito pelo iOS (Messages) e pelo Android
     return 'sms:' + SMS_NUMBER + '?&body=' + encodeURIComponent(body);
   }
@@ -161,13 +177,17 @@
       if (v('date')) {
         var p = v('date').split('-');
         var when = new Date(+p[0], +p[1] - 1, +p[2]).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-        lines.push('Preferred date: ' + when + (v('time') ? ' (' + v('time') + ')' : ''));
+        lines.push('Preferred date: ' + when + (v('time') ? ' — ' + v('time') : ''));
       } else if (v('time')) {
         lines.push('Preferred time: ' + v('time'));
       }
       if (v('details')) lines.push('', 'Project: ' + v('details'));
-      if (status) status.textContent = 'Opening your Messages app — just tap Send.';
-      window.location.href = smsLink(lines.join('\n'));
+      var body = lines.join('\n');
+      // Sem app de SMS (ex.: Windows) o sms: não abre nada: copia o texto e não promete sucesso
+      if (navigator.clipboard) navigator.clipboard.writeText(body).catch(function () {});
+      if (status) status.textContent = 'Opening Messages… If nothing opens, call (904) 577-1257 — your request is copied so you can paste it in a text.';
+      if (window.dataLayer) window.dataLayer.push({ event: 'booking_sms_open', service: v('service') });
+      window.location.href = smsLink(body);
     });
   });
 
