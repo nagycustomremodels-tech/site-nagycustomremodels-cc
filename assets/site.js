@@ -62,8 +62,11 @@
   // ── Vídeos: preload="none" + play só depois do load e quando visíveis (não pesam no carregamento);
   //    respeita reduced-motion + botão de pausa (WCAG 2.2.2) ──
   document.querySelectorAll('video[data-autoplay]').forEach(function (v) {
-    if (reduceMotion) { v.controls = true; return; }
+    if (reduceMotion) return; // fica com controls (vem no HTML, cobre também quem está sem JS)
+    v.controls = false;
+    var userToggled = false;
     var start = function () {
+      if (userToggled) return; // usuário já mexeu no Play/Pause antes do load: respeita
       var p = v.play();
       if (p && p.catch) p.catch(function () {}); // modo economia do iOS bloqueia: fica o pôster + botão Play
     };
@@ -82,7 +85,7 @@
       btn.textContent = v.paused ? 'Play' : 'Pause';
       btn.setAttribute('aria-label', (v.paused ? 'Play' : 'Pause') + ' video');
     };
-    btn.addEventListener('click', function () { if (v.paused) v.play(); else v.pause(); });
+    btn.addEventListener('click', function () { userToggled = true; if (v.paused) v.play(); else v.pause(); });
     v.addEventListener('play', sync);
     v.addEventListener('pause', sync);
     sync();
