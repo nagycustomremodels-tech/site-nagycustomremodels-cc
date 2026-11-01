@@ -428,12 +428,14 @@ a.footer-link:hover { color: var(--accent-l); }
     background: #111; border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom);
   }
   .action-bar a {
-    display: flex; align-items: center; justify-content: center; gap: .45rem; min-height: 58px;
-    font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; color: var(--ink);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem; min-height: 64px;
+    font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: var(--ink);
     border-right: 1px solid var(--line);
   }
+  .action-bar svg { color: var(--accent-l); }
   .action-bar a:last-child { background: var(--accent); color: var(--white); border-right: 0; }
-  body { padding-bottom: 58px; }
+  .action-bar a:last-child svg { color: var(--white); }
+  body { padding-bottom: 64px; }
 }
 @media (max-width: 600px) {
   .container { padding: 0 1rem; }
