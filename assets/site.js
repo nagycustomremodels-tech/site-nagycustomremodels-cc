@@ -185,7 +185,7 @@
       if (v('date')) {
         var p = v('date').split('-');
         var when = new Date(+p[0], +p[1] - 1, +p[2]).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-        lines.push('Preferred date: ' + when + (v('time') ? ' — ' + v('time') : ''));
+        lines.push('Preferred date: ' + when + (v('time') ? ', ' + v('time') : ''));
       } else if (v('time')) {
         lines.push('Preferred time: ' + v('time'));
       }
@@ -193,7 +193,7 @@
       var body = lines.join('\n');
       // Sem app de SMS (ex.: Windows) o sms: não abre nada: copia o texto e não promete sucesso
       if (navigator.clipboard) navigator.clipboard.writeText(body).catch(function () {});
-      if (status) status.textContent = 'Opening Messages… If nothing opens, call (904) 577-1257 — your request is copied so you can paste it in a text.';
+      if (status) status.textContent = 'Opening Messages… If nothing opens, call (904) 577-1257. Your request is copied so you can paste it in a text.';
       if (window.dataLayer) window.dataLayer.push({ event: 'booking_sms_open', service: v('service') });
       window.location.href = smsLink(body);
     });
