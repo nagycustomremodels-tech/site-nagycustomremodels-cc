@@ -294,7 +294,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .rev-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
 .rev-more { margin-top: 1.5rem; }
 .rev-card { background: var(--paper); color: var(--paper-ink); padding: 1.8rem; border-top: 4px solid var(--accent); display: flex; flex-direction: column; gap: 1rem; }
-.rev-stars { color: #E7A33E; letter-spacing: .1em; font-size: 1.05rem; }
+.rev-stars { color: #B8741A; letter-spacing: .1em; font-size: 1.05rem; }
 .rev-text { color: #333; font-size: .95rem; flex: 1; }
 .rev-author { font-weight: 700; }
 .rev-loc { font-size: .8rem; color: #5A5A5A; }
@@ -453,7 +453,7 @@ a.footer-link:hover { color: var(--accent-l); }
   .logo img { height: 46px; }
   .hero-grid, .split, .book-grid { grid-template-columns: 1fr; }
   .hero-media { padding: 0 0 2.5rem 2.5rem; max-width: 520px; }
-  .svc-grid, .rev-grid { grid-template-columns: 1fr 1fr; }
+  .svc-grid, .rev-grid { grid-template-columns: 1fr 1fr; } /* 4 depoimentos: 2x2 até 1080px */
   .gal-grid { grid-template-columns: repeat(3, 1fr); }
   .split-media { max-width: 520px; margin-right: .75rem; } /* o inset sai .75rem à direita: sem scroll horizontal */
   .split-media .split-inset { right: -.75rem; }
