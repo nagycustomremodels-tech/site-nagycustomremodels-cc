@@ -291,7 +291,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 /* ── REVIEWS ── */
 .rev-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
 .rev-head .sec-head { margin-bottom: 0; }
-.rev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.rev-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.rev-more { margin-top: 1.5rem; }
 .rev-card { background: var(--paper); color: var(--paper-ink); padding: 1.8rem; border-top: 4px solid var(--accent); display: flex; flex-direction: column; gap: 1rem; }
 .rev-stars { color: #E7A33E; letter-spacing: .1em; font-size: 1.05rem; }
 .rev-text { color: #333; font-size: .95rem; flex: 1; }
