@@ -202,6 +202,14 @@
     });
   });
 
+  // ── Popover "Text us": fecha ao seguir um link de dentro (ex.: #book na mesma página) ──
+  document.querySelectorAll('[popover] a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var p = a.closest('[popover]');
+      if (p && p.hidePopover) p.hidePopover();
+    });
+  });
+
   // ── Footer year ──
   var fy = document.getElementById('footerYear');
   if (fy) fy.textContent = new Date().getFullYear();
