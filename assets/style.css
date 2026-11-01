@@ -161,8 +161,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
   display: grid; grid-template-columns: 1.05fr .95fr; gap: 3.5rem; align-items: center;
   padding-top: clamp(3rem, 7vw, 5.5rem); padding-bottom: clamp(3.5rem, 7vw, 5.5rem);
 }
-.hero-tags { display: flex; flex-wrap: wrap; gap: .4rem 1rem; margin-bottom: 1.4rem; font-size: .75rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); }
-.hero-tags span + span::before { content: '/'; margin-right: 1rem; color: var(--accent); }
 .hero .h1 { margin-bottom: 1.4rem; }
 .hero .lead { margin-bottom: 2rem; }
 .btn-row { display: flex; flex-wrap: wrap; gap: .9rem; }
@@ -229,7 +227,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .split-copy p + p { margin-top: 1rem; }
 .split-copy p { color: var(--ink-2); }
 .sec-paper .split-copy p { color: #3A3A3A; }
-.mini-stats { display: flex; gap: 2.5rem; margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid var(--line); }
+.mini-stats { display: flex; flex-wrap: wrap; gap: 2.5rem; margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid var(--line); }
 .mini-stats strong { display: block; font-size: 2rem; font-weight: 700; line-height: 1; color: var(--accent-l); }
 .mini-stats span { font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
 
@@ -322,7 +320,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .contact-list a:hover { color: var(--accent-l); }
 .trust-list {
   list-style: none; display: grid; gap: .9rem; margin-top: 2rem; padding: 1.4rem 1.5rem;
-  background: var(--bg3); border-left: 4px solid var(--accent);
+  background: var(--bg3); border: 1px solid var(--line);
 }
 .trust-list li { display: flex; gap: .8rem; align-items: flex-start; font-size: .95rem; font-weight: 600; color: var(--ink); }
 .trust-list svg { flex-shrink: 0; margin-top: .1rem; color: var(--accent-l); }
@@ -410,7 +408,10 @@ a.footer-link:hover { color: var(--accent-l); }
   padding: 1.7rem 1.5rem 1.4rem; text-align: center;
   background: var(--paper); color: var(--paper-ink); border: 0; border-top: 6px solid var(--accent);
   box-shadow: 0 20px 50px rgba(0,0,0,.5);
+  max-height: calc(100dvh - 7rem); overflow-y: auto; /* janela baixa: não corta o topo */
 }
+/* sem suporte a popover (Safari < 17, Firefox < 125) o painel ficaria sempre aberto: some o balão */
+@supports not selector(:popover-open) { .text-fab, .text-panel { display: none; } }
 .text-panel-close {
   position: absolute; top: .4rem; right: .5rem; width: 36px; height: 36px;
   background: none; border: 0; color: #555; font-size: 1rem; cursor: pointer;
@@ -475,7 +476,6 @@ a.footer-link:hover { color: var(--accent-l); }
   .topbar { font-size: .75rem; }
   .checks { gap: .6rem 1rem; margin-top: 1.6rem; }
   .checks li { font-size: .85rem; }
-  .hero-tags { display: none; } /* o H1 já diz kitchen & bath */
   .hero-grid { gap: 2.5rem; padding-top: 2.2rem; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .stat:nth-child(2) { border-right: none; }
