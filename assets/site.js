@@ -26,11 +26,6 @@
     window.addEventListener('resize', function () { if (window.innerWidth > 900) setMenu(false); });
   }
 
-  // ── Hero entrance ──
-  requestAnimationFrame(function () {
-    document.querySelectorAll('.hero-anim').forEach(function (el) { el.classList.add('loaded'); });
-  });
-
   // ── Scroll reveal (rootMargin positivo: dispara antes de entrar na tela) ──
   var revealObserver = 'IntersectionObserver' in window ? new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
@@ -64,9 +59,22 @@
     counters.forEach(function (el) { countObserver.observe(el); });
   }
 
-  // ── Autoplay videos: respeita reduced-motion + botão de pausa (WCAG 2.2.2) ──
-  document.querySelectorAll('video[autoplay]').forEach(function (v) {
-    if (reduceMotion) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; return; }
+  // ── Vídeos: preload="none" + play só depois do load e quando visíveis (não pesam no carregamento);
+  //    respeita reduced-motion + botão de pausa (WCAG 2.2.2) ──
+  document.querySelectorAll('video[data-autoplay]').forEach(function (v) {
+    if (reduceMotion) { v.controls = true; return; }
+    var start = function () {
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {}); // modo economia do iOS bloqueia: fica o pôster + botão Play
+    };
+    var whenLoaded = function () {
+      if (!('IntersectionObserver' in window)) { start(); return; }
+      var io = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { io.disconnect(); start(); }
+      });
+      io.observe(v);
+    };
+    if (document.readyState === 'complete') whenLoaded(); else window.addEventListener('load', whenLoaded);
     var btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'video-toggle';

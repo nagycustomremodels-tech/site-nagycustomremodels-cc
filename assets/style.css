@@ -397,16 +397,11 @@ a.footer-link:hover { color: var(--accent-l); }
 .reveal.d2 { transition-delay: .16s; }
 .reveal.d3 { transition-delay: .24s; }
 .reveal.d4 { transition-delay: .32s; }
-.hero-anim {
-  opacity: 0; transform: translateY(14px);
-  transition-property: opacity, transform; transition-duration: .6s; transition-timing-function: ease;
-}
-.hero-anim.loaded { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .hero-anim { opacity: 1; transform: none; transition: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
   .svc-card-img img, .gal-item img { transition: none; }
 }
-.no-js .reveal, .no-js .hero-anim { opacity: 1; transform: none; }
+.no-js .reveal { opacity: 1; transform: none; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1080px) {
